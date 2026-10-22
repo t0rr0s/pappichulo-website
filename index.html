@@ -48,7 +48,8 @@ body { font-family: var(--f-body); font-size: 15px; line-height: 1.4; -webkit-ta
 button { font: inherit; color: inherit; }
 button:focus-visible { outline: 2px solid var(--sun); outline-offset: 3px; }
 
-#poster { position: fixed; inset: 0; background: var(--ink) no-repeat; background-size: auto 100%; transition: opacity 0.6s ease; }
+#poster { position: fixed; inset: 0; background: var(--ink); overflow: hidden; transition: opacity 0.6s ease; }
+#poster img { position: absolute; top: 0; height: 100%; width: auto; max-width: none; }
 #poster.gone { opacity: 0; pointer-events: none; }
 canvas#view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
 canvas#view:active { cursor: grabbing; }
@@ -134,7 +135,7 @@ body.touch #gyro { display: block; margin-top: 2px; }
 </style>
 </head>
 <body>
-<div id="poster" aria-hidden="true"></div>
+<div id="poster" aria-hidden="true"><img id="poster-img" alt="" crossorigin="anonymous"></div>
 <canvas id="view" aria-label="360 view of Pappi Chulo. Drag sideways to look around. Swipe up to walk forward."></canvas>
 
 <div class="ui" id="brand">
@@ -186,7 +187,7 @@ body.touch #gyro { display: block; margin-top: 2px; }
 <section class="ui" id="book" aria-label="Book your bed" aria-hidden="true">
   <span class="grab" aria-hidden="true"></span>
   <h2>That's Pappi. Your bed is waiting.</h2>
-  <p>Book direct with us. Best price, and your first drink is on the house.</p>
+  <p>Book direct on Pappi's own page. No middleman.</p>
   <div class="row">
     <button type="button" class="primary" id="book-go">Book a bed</button>
     <button type="button" class="ghost" id="book-again">Walk again</button>
@@ -240,10 +241,10 @@ setInterval(paintClock, 30000);
 /* ---------- poster: shows instantly while the 360 view loads ---------- */
 const poster = $("poster");
 function placePoster() {
-  const ch = innerHeight, iw = ch * 2;
-  poster.style.backgroundPosition = `${innerWidth / 2 - 0.75 * iw}px 50%`;
+  const iw = innerHeight * 2; // a 360 picture is twice as wide as it is tall
+  $("poster-img").style.left = `${innerWidth / 2 - 0.75 * iw}px`; // centre on "forward", into Pappi
 }
-poster.style.backgroundImage = `url(${MEDIA}${STOPS[0].photo}-${mode}-small.jpg)`;
+$("poster-img").src = `${MEDIA}${STOPS[0].photo}-${mode}-small.jpg`;
 placePoster();
 
 /* ---------- renderer ---------- */
