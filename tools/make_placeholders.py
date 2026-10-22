@@ -8,7 +8,7 @@ around. Real footage replaces these files later, with the same file names.
 
 Run:  python3 tools/make_placeholders.py            (everything)
       python3 tools/make_placeholders.py preview    (quick small test pictures)
-Needs: numpy, Pillow, opencv-python, ffmpeg.
+Needs: numpy, Pillow, opencv-python, ffmpeg, the Poppins font (set FONT_DIR if it is not in the folder below).
 """
 import math
 import os
@@ -23,13 +23,16 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "walk", "media")
-FONT_BOLD = "/usr/share/fonts/truetype/google-fonts/Poppins-BoldItalic.ttf"
-FONT_PLAIN = "/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf"
+FONT_DIR = os.environ.get("FONT_DIR", "/usr/share/fonts/truetype/google-fonts")
+FONT_BOLD = os.path.join(FONT_DIR, "Poppins-BoldItalic.ttf")
+FONT_PLAIN = os.path.join(FONT_DIR, "Poppins-Bold.ttf")
 F = np.float32
 EPS = 2e-3
 PPM = 150  # texture pixels per metre
 
 # Stops along the walk (camera at eye height 1.6 m). Walk goes along +z.
+# Walking in (facing +z), +x is on your LEFT and -x on your right. The real
+# bar is on the left as you come in from the main gate, so the bar side is +x.
 STOPS = {"gate": (0.0, 1.6, -2.2), "bar": (0.0, 1.6, 7.0), "floor": (0.0, 1.6, 14.4)}
 FPS = 24
 
@@ -186,7 +189,7 @@ TEX = {}
 def build_textures():
     if TEX:
         return TEX
-    TEX["left"] = wall_tex(22, 3, 11, ["PAPPI", "LOVE", "GOA"], (236, 226, 206), backbar=(12.0, 17.0))
+    TEX["left"] = wall_tex(22, 3, 11, ["PAPPI", "LOVE", "GOA"], (236, 226, 206), backbar=(5.0, 10.0))
     TEX["right"] = wall_tex(22, 3, 23, ["VAGATOR", "CHULO", "VIBES"], (232, 214, 190))
     TEX["back"] = wall_tex(14.6, 3, 37, ["PAPPI", "CHULO"], (226, 222, 232))
     TEX["front"] = wall_tex(14.6, 3, 41, ["COME", "BACK"], (238, 230, 214))
@@ -269,14 +272,14 @@ def people(mode, t):
             sway = 0.05 * math.sin(2 * math.pi * (1.0 * t + ph))
             out.append((x + sway, z, h, k, int(rng.integers(5)), bob))
         for k in range(6):  # at the bar
-            out.append((-2.75 - rng.uniform(0, 0.25), 5.9 + k * 0.62, rng.uniform(1.6, 1.85), k + 3, int(rng.integers(5)), 0.0))
-        for k, (x, z) in enumerate([(2.2, 4.4), (2.8, 4.9), (4.6, 10.5), (5.0, 11.1), (5.7, 10.4),
-                                    (-4.2, 12.2), (-4.8, 12.6), (3.2, 12.8), (-1.6, 1.4), (1.6, 1.8)]):
+            out.append((2.75 + rng.uniform(0, 0.25), 5.9 + k * 0.62, rng.uniform(1.6, 1.85), k + 3, int(rng.integers(5)), 0.0))
+        for k, (x, z) in enumerate([(-2.2, 4.4), (-2.8, 4.9), (-4.6, 10.5), (-5.0, 11.1), (-5.7, 10.4),
+                                    (4.2, 12.2), (4.8, 12.6), (-3.2, 12.8), (1.6, 1.4), (-1.6, 1.8)]):
             sway = 0.03 * math.sin(2 * math.pi * (t / 3.0 + k * 0.1))
             out.append((x + sway, z, rng.uniform(1.6, 1.84), k + 1, int(rng.integers(5)), 0.0))
     else:
-        for k, (x, z, h) in enumerate([(2.0, 4.3, 1.15), (2.9, 4.1, 1.12), (4.9, 9.6, 1.12),
-                                       (-2.9, 7.1, 1.75), (-2.85, 8.3, 1.68), (4.3, 1.9, 1.72), (6.1, 3.6, 1.66)]):
+        for k, (x, z, h) in enumerate([(-2.0, 4.3, 1.15), (-2.9, 4.1, 1.12), (-4.9, 9.6, 1.12),
+                                       (2.9, 7.1, 1.75), (2.85, 8.3, 1.68), (-4.3, 1.9, 1.72), (-6.1, 3.6, 1.66)]):
             out.append((x, z, h, k + 2, int(rng.integers(5)), 0.0))
     return out
 
@@ -285,8 +288,8 @@ def build_scene(mode, t):
     P = Prims()
     wall_h = 3.0
     # courtyard walls (x -7..7, z 0..22)
-    P.add_box((-7.3, 0, 0), (-7.0, wall_h, 22), WALL, tag="left")
-    P.add_box((7.0, 0, 0), (7.3, wall_h, 22), WALL, tag="right")
+    P.add_box((7.0, 0, 0), (7.3, wall_h, 22), WALL, tag="left")
+    P.add_box((-7.3, 0, 0), (-7.0, wall_h, 22), WALL, tag="right")
     P.add_box((-7.3, 0, 22), (7.3, wall_h, 22.3), WALL, tag="back")
     P.add_box((-7.3, 0, 0), (-1.6, 2.6, 0.3), WALL, tag="front")
     P.add_box((1.6, 0, 0), (7.3, 2.6, 0.3), WALL, tag="front")
@@ -295,27 +298,27 @@ def build_scene(mode, t):
     P.add_box((1.55, 0, -0.15), (1.95, 3.7, 0.4), PILLAR, srgb((178, 82, 52)))
     P.add_box((-2.2, 3.0, -0.12), (2.2, 3.8, 0.22), SIGN, tag="sign")
     # hostel buildings behind the walls
-    P.add_box((7.3, 0, 3), (14, 6.6, 17), BUILDING, srgb((236, 184, 96)), tag="bright")
-    P.add_box((-14, 0, 11), (-7.3, 5.2, 21), BUILDING, srgb((96, 178, 170)), tag="bleft")
+    P.add_box((-14, 0, 3), (-7.3, 6.6, 17), BUILDING, srgb((236, 184, 96)), tag="bright")
+    P.add_box((7.3, 0, 11), (14, 5.2, 21), BUILDING, srgb((96, 178, 170)), tag="bleft")
     # bar counter on the left
-    P.add_box((-6.0, 0, 5.5), (-3.2, 1.1, 9.5), BAR, srgb((120, 70, 40)), tag="bar")
+    P.add_box((3.2, 0, 5.5), (6.0, 1.1, 9.5), BAR, srgb((120, 70, 40)), tag="bar")
     # mango tree on the right
-    P.add_cyl(3.6, 8.0, 0.42, 0, 3.6, TRUNK, srgb((92, 62, 40)))
-    P.add_cyl(3.0, 8.4, 0.22, 2.2, 4.4, TRUNK, srgb((92, 62, 40)))
-    for c, r in [((3.6, 5.3, 8.0), 2.7), ((1.9, 4.8, 9.1), 2.0), ((5.2, 4.6, 6.9), 2.1),
-                 ((3.9, 4.4, 10.3), 1.9), ((2.4, 5.6, 6.6), 1.7)]:
+    P.add_cyl(-3.6, 8.0, 0.42, 0, 3.6, TRUNK, srgb((92, 62, 40)))
+    P.add_cyl(-3.0, 8.4, 0.22, 2.2, 4.4, TRUNK, srgb((92, 62, 40)))
+    for c, r in [((-3.6, 5.3, 8.0), 2.7), ((-1.9, 4.8, 9.1), 2.0), ((-5.2, 4.6, 6.9), 2.1),
+                 ((-3.9, 4.4, 10.3), 1.9), ((-2.4, 5.6, 6.6), 1.7)]:
         P.add_sph(c, r, LEAF, srgb((52, 104, 40)))
     # seating under the tree, ping pong near the gate
-    P.add_box((1.4, 0, 3.6), (3.4, 0.42, 5.2), CUSHION, srgb((220, 70, 60)))
-    P.add_box((4.3, 0, 8.9), (5.8, 0.45, 10.4), CUSHION, srgb((40, 150, 200)))
-    P.add_box((4.0, 0.72, 1.8), (6.4, 0.78, 3.2), PINGPONG, srgb((30, 120, 70)))
-    P.add_box((4.9, 0, 2.3), (5.5, 0.72, 2.7), TABLE, srgb((40, 40, 40)), shadow=False)
+    P.add_box((-3.4, 0, 3.6), (-1.4, 0.42, 5.2), CUSHION, srgb((220, 70, 60)))
+    P.add_box((-5.8, 0, 8.9), (-4.3, 0.45, 10.4), CUSHION, srgb((40, 150, 200)))
+    P.add_box((-6.4, 0.72, 1.8), (-4.0, 0.78, 3.2), PINGPONG, srgb((30, 120, 70)))
+    P.add_box((-5.5, 0, 2.3), (-4.9, 0.72, 2.7), TABLE, srgb((40, 40, 40)), shadow=False)
     # dance floor end: DJ booth and speakers
     P.add_box((-1.6, 0, 20.6), (1.6, 1.15, 21.4), DJ, tag="dj")
     P.add_box((-3.2, 0, 20.5), (-2.3, 1.9, 21.4), SPEAKER, srgb((22, 22, 26)))
     P.add_box((2.3, 0, 20.5), (3.2, 1.9, 21.4), SPEAKER, srgb((22, 22, 26)))
     # palms outside and a treeline on the horizon
-    for (x, z, h) in [(-10, -6, 8.5), (9, -8, 9.5), (-11, 4, 9.0), (12, 21, 8.0), (-3, 27, 9.2), (5, 28, 8.4)]:
+    for (x, z, h) in [(10, -6, 8.5), (-9, -8, 9.5), (11, 4, 9.0), (-12, 21, 8.0), (3, 27, 9.2), (-5, 28, 8.4)]:
         P.add_cyl(x, z, 0.2, 0, h, TRUNK, srgb((120, 100, 80)))
         for a in range(5):
             ang = a * 2 * math.pi / 5
@@ -325,9 +328,9 @@ def build_scene(mode, t):
         P.add_sph((36 * math.cos(ang), 1.5, 10 + 36 * math.sin(ang)), 8.0, LEAF, srgb((40, 82, 36)), shadow=False)
     # dogs (day)
     if mode == "day":
-        for (x, z, col) in [(-1.2, 2.2, (196, 150, 100)), (1.4, -1.0, (40, 32, 28))]:
+        for (x, z, col) in [(1.2, 2.2, (196, 150, 100)), (-1.4, -1.0, (40, 32, 28))]:
             P.add_sph((x, 0.26, z), 0.28, DOG, srgb(col))
-            P.add_sph((x + 0.3, 0.36, z + 0.12), 0.15, DOG, srgb(col))
+            P.add_sph((x - 0.3, 0.36, z + 0.12), 0.15, DOG, srgb(col))
     # people
     for (x, z, h, shirt, skin, yo) in people(mode, t):
         P.add_cyl(x, z, 0.2, yo, yo + h - 0.24, SHIRT, SHIRTS[shirt % len(SHIRTS)])
@@ -359,15 +362,15 @@ def lights(mode, t):
     beat = 0.65 + 0.35 * abs(math.cos(2 * math.pi * 2.0 * t))
     swap = 0.5 + 0.5 * math.sin(2 * math.pi * t / 3.0)
     L = [
-        ((-5.0, 2.8, 17.5), (0.55, 0.2, 1.0), 9 * beat),
-        ((5.0, 2.8, 17.5), (1.0, 0.15, 0.6), 9 * (1.2 - beat * 0.5)),
+        ((5.0, 2.8, 17.5), (0.55, 0.2, 1.0), 9 * beat),
+        ((-5.0, 2.8, 17.5), (1.0, 0.15, 0.6), 9 * (1.2 - beat * 0.5)),
         ((0.0, 3.3, 21.0), (0.1, 0.75 + 0.2 * swap, 1.0), 7 * beat),
-        ((-4.6, 2.6, 7.5), (1.0, 0.62, 0.28), 4.5),
+        ((4.6, 2.6, 7.5), (1.0, 0.62, 0.28), 4.5),
         ((0.0, 3.2, -0.9), (1.0, 0.7, 0.35), 5),
-        ((-4.0, 4.6, -6.0), (1.0, 0.55, 0.2), 6),
-        ((2.5, 3.0, 4.5), (1.0, 0.72, 0.4), 2.2),
-        ((3.0, 3.0, 11.5), (1.0, 0.72, 0.4), 2.2),
-        ((-3.5, 3.0, 12.5), (1.0, 0.72, 0.4), 2.0),
+        ((4.0, 4.6, -6.0), (1.0, 0.55, 0.2), 6),
+        ((-2.5, 3.0, 4.5), (1.0, 0.72, 0.4), 2.2),
+        ((-3.0, 3.0, 11.5), (1.0, 0.72, 0.4), 2.2),
+        ((3.5, 3.0, 12.5), (1.0, 0.72, 0.4), 2.0),
     ]
     return [(np.array(p, F), np.array(c, F), F(i)) for p, c, i in L]
 
@@ -477,7 +480,7 @@ def sky(D, mode):
         hor = np.array([0.78, 0.86, 0.95], F)
         zen = np.array([0.22, 0.45, 0.85], F)
         c = hor + (zen - hor) * np.clip(y, 0, 1) ** 0.6
-        sun = np.array([0.45, 0.78, -0.43], F)
+        sun = np.array([-0.45, 0.78, -0.43], F)
         sun /= np.linalg.norm(sun)
         s = np.clip(D @ sun, 0, 1)[:, None]
         c = c + np.array([1.0, 0.92, 0.75], F) * (s ** 600 * 8 + s ** 12 * 0.25)
@@ -583,8 +586,8 @@ def shade(O, D, P, t, kind, idx, mode, time_s, lit):
             ab[sel] = c
         whitewash = np.array(srgb((228, 222, 210)), F)
         for tag, face_ax, face_sign, umap in [
-            ("left", 0, 1.0, lambda p: ((22 - p[:, 2]) / 22, (3 - p[:, 1]) / 3)),
-            ("right", 0, -1.0, lambda p: (p[:, 2] / 22, (3 - p[:, 1]) / 3)),
+            ("left", 0, -1.0, lambda p: (p[:, 2] / 22, (3 - p[:, 1]) / 3)),
+            ("right", 0, 1.0, lambda p: ((22 - p[:, 2]) / 22, (3 - p[:, 1]) / 3)),
             ("back", 2, -1.0, lambda p: ((7.3 - p[:, 0]) / 14.6, (3 - p[:, 1]) / 3)),
             ("front", 2, 1.0, lambda p: ((p[:, 0] + 7.3) / 14.6, (3 - p[:, 1]) / 3)),
         ]:
@@ -612,12 +615,12 @@ def shade(O, D, P, t, kind, idx, mode, time_s, lit):
                 tex_face(face, T["dj"], (1.6 - p[:, 0]) / 3.2, (1.15 - p[:, 1]) / 1.15)
         s = tags == "bar"
         if s.any():
-            face = s & (ax == 0) & (sign > 0)
+            face = s & (ax == 0) & (sign < 0)
             top = s & (ax == 1)
             plain(top, np.array(srgb((70, 40, 24)), F))
             if face.any():
                 p = Pb[face]
-                tex_face(face, T["barfront"], (9.5 - p[:, 2]) / 4.0, (1.1 - p[:, 1]) / 1.1)
+                tex_face(face, T["barfront"], (p[:, 2] - 5.5) / 4.0, (1.1 - p[:, 1]) / 1.1)
         for tag in ("bright", "bleft"):
             s = tags == tag
             if not s.any():
@@ -651,8 +654,8 @@ def shade(O, D, P, t, kind, idx, mode, time_s, lit):
         pp = mats == PINGPONG
         if pp.any():
             p = Pb[pp]
-            line = (np.abs(p[:, 2] - 2.5) < 0.02) | (np.abs(p[:, 0] - 5.2) < 0.015) | \
-                   (np.abs(p[:, 0] - 4.03) < 0.03) | (np.abs(p[:, 0] - 6.37) < 0.03)
+            line = (np.abs(p[:, 2] - 2.5) < 0.02) | (np.abs(p[:, 0] + 5.2) < 0.015) | \
+                   (np.abs(p[:, 0] + 4.03) < 0.03) | (np.abs(p[:, 0] + 6.37) < 0.03)
             ab[pp] = np.where(line[:, None], 0.85, ab[pp])
         alb[b] = ab
         emi[b] = eb
@@ -692,7 +695,7 @@ def shade(O, D, P, t, kind, idx, mode, time_s, lit):
     # --- lighting
     Nrm /= np.maximum(np.linalg.norm(Nrm, axis=1, keepdims=True), 1e-6)
     if not night:
-        sun = np.array([0.45, 0.78, -0.43], F)
+        sun = np.array([-0.45, 0.78, -0.43], F)
         sun /= np.linalg.norm(sun)
         ndl = np.clip(Nrm @ sun, 0, 1)
         lit_idx = np.nonzero(ndl > 0)[0]

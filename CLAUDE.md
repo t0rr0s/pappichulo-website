@@ -12,6 +12,10 @@ The website for Pappi Chulo, a party hostel on Ozran Beach Road (next to 9 Bar),
 - A Day / Night switch. Every stop has a day 360 shot and a night 360 shot from the exact same spot.
 - After 7 pm Goa time (Asia/Kolkata) the site flips to Night by itself.
 
+## Real layout (from Vru)
+- Walking in from the main gate, the bar is on the LEFT.
+- Placeholder scenes must match the real layout. In `tools/make_placeholders.py` the walk goes along +z, and +x is on your left.
+
 ## How the walk works (keep this)
 - Stops = sharp 360 photos the visitor can look around in.
 - Moving between stops = short 360 video clips (3 to 5 seconds) that play when the visitor swipes up.
