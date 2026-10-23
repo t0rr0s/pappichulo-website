@@ -1,26 +1,33 @@
 # pappichulo-website
-interactive world website for pappi chulo
+The website for Pappi Chulo, a party hostel in Vagator, North Goa.
 
-## Test walk (live)
+## Test version (live)
 Open on your phone: https://t0rr0s.github.io/pappichulo-website/
 
-- Swipe up to walk forward. Swipe down to go back.
-- Drag sideways to look around.
-- "Move your phone to look" (top right) turns on tilt-to-look.
-- Day / Night switch at the top. After 7 pm Goa time it opens on Night by itself.
-- Add `?lite` to the link to test the simple version (no walking clips).
+The page shows what Pappi is like through its guests: short videos of them talking, their own words, a day at Pappi, the family, the three eras, and a Book button.
 
-The pictures are placeholders made by `tools/make_placeholders.py`. Real 360 shots replace them with the same file names.
+Every video, photo, quote and name is a **sample** until the real ones arrive. The page says so at the top. The list of what the team needs to collect is in `docs/assets-needed.md` (also as a PDF).
 
 ## What's where
-- `index.html`: the whole test walk (one file).
-- `walk/media/`: the 360 photos (`stopN-name-day|night.jpg`, plus `-small.jpg` previews), walking clips (`clipN-...-day|night.mp4`) and the night party loop.
-- `tools/make_placeholders.py`: draws the fake Pappi and saves it like a 360 camera would.
-- `tools/make_asset_list.py`: builds the "what we need from the team" list.
-- `docs/`: that list as a PDF and as a checklist.
+- `index.html`: the home page (one file).
+- `media/`: the sample videos and photos for the home page. Real files replace them with the same names.
+- `tools/make_home_placeholders.py`: makes the sample videos and photos.
+- `tools/make_asset_list.py`: builds the "what we need from the team" list (`docs/`).
+- `walk/`: the 360 walk, parked until after launch. Open `walk/` to try it.
+- `tools/make_walk_placeholders.py`: makes the fake 360 scenes for the walk.
 - `CLAUDE.md`: the project brief every Claude Code session reads first.
 
-## Swapping in real footage
-Export from the 360 camera as a normal 360 (2:1) file, then:
-- Photos: 4096 x 2048 JPG, plus a 1024 x 512 `-small.jpg`.
-- Clips: 2048 x 1024 MP4 (H.264), about 3 to 5 seconds, starting exactly at one stop and ending at the next.
+## Swapping in real files for the home page
+Keep the file names. Sizes that work well on phones:
+- Hero video: `hero-phone.mp4` 720 x 1280 (tall) and `hero-laptop.mp4` 1280 x 720 (wide), 8 to 15 seconds, H.264, no sound needed. Plus a `.jpg` still of each with the same name.
+- Guest videos: `story-1.mp4` to `story-6.mp4`, 540 x 960 (tall), 20 to 40 seconds, H.264 with sound. Plus a `.jpg` still of each.
+- Photos: `day-1.jpg` to `day-6.jpg` 1200 x 800, `era-1.jpg` to `era-3.jpg` 900 x 675, `family-1.jpg` to `family-6.jpg` 480 x 480 square.
+- Sharing picture: `og.jpg` 1200 x 630.
+
+The quotes and names live in `index.html`. Search for "Sample" to find every spot to fill in.
+
+## The 360 walk (later)
+- Swipe up to walk forward. Swipe down to go back. Drag sideways to look around.
+- Day / Night switch at the top. After 7 pm Goa time it opens on Night by itself.
+- Add `?lite` to the link to test the simple version (no walking clips).
+- Real 360 footage: photos 4096 x 2048 JPG plus a 1024 x 512 `-small.jpg`; clips 2048 x 1024 MP4, 3 to 5 seconds, from one stop to the next.

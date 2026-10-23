@@ -6,8 +6,8 @@ graffiti walls, dance floor, DJ booth) and saves it the same way a real
 360 camera does: one 2:1 "equirectangular" picture that wraps all the way
 around. Real footage replaces these files later, with the same file names.
 
-Run:  python3 tools/make_placeholders.py            (everything)
-      python3 tools/make_placeholders.py preview    (quick small test pictures)
+Run:  python3 tools/make_walk_placeholders.py            (everything)
+      python3 tools/make_walk_placeholders.py preview    (quick small test pictures)
 Needs: numpy, Pillow, opencv-python, ffmpeg, the Poppins font (set FONT_DIR if it is not in the folder below).
 """
 import math
