@@ -24,6 +24,7 @@
 <style>
 /* The graffiti wall. A calm paper frame, chunky black type, one hot coral, mango and mint
    for stickers only. The fun lives in the stickers, the ticker, the symbols and the copy.
+   Hard shadows only on buttons and stickers. Cards and photos stay flat with a thin line.
    Fonts: Dela Gothic One for the big headlines, Londrina Solid for the hand-lettered bits
    (name, stickers, quotes, labels), Bricolage Grotesque for everything else.
    Mobile first: one column, then a wider grid from 820px. */
@@ -31,20 +32,20 @@
   --paper: #fffaf2;
   --sand: #f3ebdc;
   --ink: #141210;
-  --soft: rgba(20, 18, 16, 0.64);
-  --line: rgba(20, 18, 16, 0.14);
+  --soft: rgba(20, 18, 16, 0.72);
+  --line: rgba(20, 18, 16, 0.18);
   --coral: #ff5a3c;
   --mango: #ffc53d;
   --mint: #8fe3c0;
-  --cream-soft: rgba(255, 250, 242, 0.68);
-  --cream-line: rgba(255, 250, 242, 0.2);
+  --cream-soft: rgba(255, 250, 242, 0.78);
+  --cream-line: rgba(255, 250, 242, 0.22);
   --sym-line: #141210;
   --f-head: "Dela Gothic One", "Arial Black", Impact, sans-serif;
   --f-hand: "Londrina Solid", "Arial Narrow", Impact, sans-serif;
   --f-body: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --gut: max(18px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
   --wide: 1120px;
-  --r: 18px;
+  --r: 16px;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
@@ -56,11 +57,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
 h1, h2 { margin: 0; font-family: var(--f-head); font-weight: 400; line-height: 0.98; letter-spacing: -0.02em; text-transform: uppercase; text-wrap: balance; }
-h2 { font-size: clamp(30px, 7.2vw, 60px); }
+h2 { font-size: clamp(30px, 7vw, 56px); }
 h3 { margin: 0; font-family: var(--f-hand); font-weight: 900; font-size: clamp(22px, 5vw, 28px); line-height: 1.05; letter-spacing: 0.01em; }
 p { margin: 0; }
 .wrap { width: min(100% - 2 * var(--gut), var(--wide)); margin-inline: auto; }
-section { padding: 64px 0; }
+section { padding: 60px 0; }
+.sand { background: var(--sand); }
 .dark { background: var(--ink); color: var(--paper); --sym-line: #fffaf2; --line: var(--cream-line); --soft: var(--cream-soft); }
 .num { display: flex; align-items: center; gap: 10px; font-family: var(--f-hand); font-weight: 900; font-size: 18px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--coral); margin-bottom: 14px; }
 .num .sym { width: 30px; height: 30px; }
@@ -69,11 +71,12 @@ section { padding: 64px 0; }
 .sym { width: 44px; height: 44px; display: inline-block; vertical-align: middle; flex: none; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 2px solid var(--ink); border-radius: 999px; padding: 13px 22px; font-weight: 700; font-size: 16px; text-decoration: none; min-height: 50px; background: var(--coral); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); transition: transform 0.15s, box-shadow 0.15s; }
 .btn.ghost { background: var(--paper); }
-.btn.ink { background: var(--ink); color: var(--paper); box-shadow: 4px 4px 0 var(--coral); }
 .dark .btn { box-shadow: 4px 4px 0 var(--paper); border-color: var(--paper); }
 .dark .btn.ghost { background: transparent; color: var(--paper); }
 .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
 .btn svg { width: 18px; height: 18px; flex: none; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: var(--r); }
+.photo { border: 2px solid var(--ink); border-radius: var(--r); background: var(--sand); object-fit: cover; width: 100%; }
 
 /* test banner */
 #test { background: var(--mango); color: var(--ink); font-size: 13px; font-weight: 600; padding: 8px var(--gut); text-align: center; line-height: 1.35; border-bottom: 2px solid var(--ink); }
@@ -87,16 +90,17 @@ section { padding: 64px 0; }
 #top .btn { padding: 9px 16px; min-height: 44px; font-size: 14px; box-shadow: 3px 3px 0 var(--ink); }
 
 /* hero */
-#hero { padding: 36px 0 0; position: relative; overflow: hidden; }
-#hero .where { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-hand); font-weight: 900; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+#hero { padding: 32px 0 0; position: relative; overflow: hidden; }
+#hero .where { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-hand); font-weight: 900; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
 #hero .where i { width: 12px; height: 12px; border-radius: 50%; background: var(--coral); border: 2px solid var(--ink); display: inline-block; }
-#hero h1 { font-size: clamp(42px, 12.2vw, 116px); }
+#hero h1 { font-size: clamp(42px, 12.2vw, 112px); }
 #hero h1 mark { background: none; color: var(--ink); position: relative; display: inline-block; z-index: 0; }
 #hero h1 mark::before { content: ""; position: absolute; left: -0.05em; right: -0.05em; top: 0.1em; bottom: 0; background: var(--mango); z-index: -1; transform: rotate(-1.5deg); border-radius: 0.12em; }
-#hero .lead { color: var(--soft); max-width: 40ch; font-size: 18px; margin-top: 18px; }
-#hero .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+#hero .lead { color: var(--soft); max-width: 40ch; font-size: 18px; margin-top: 16px; }
+#hero .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+#hero .trust { margin-top: 16px; font-size: 14px; color: var(--soft); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 #hero .frame { position: relative; margin-top: 34px; }
-#hero .frame .box { position: relative; aspect-ratio: 4 / 5; border-radius: 24px; border: 2px solid var(--ink); overflow: hidden; background: var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+#hero .frame .box { position: relative; aspect-ratio: 4 / 5; border-radius: 22px; border: 2px solid var(--ink); overflow: hidden; background: var(--ink); }
 #hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 #sound { position: absolute; right: 12px; bottom: 12px; z-index: 2; background: var(--paper); padding: 8px 14px; min-height: 42px; font-size: 14px; box-shadow: 3px 3px 0 var(--ink); }
 #sound .on, #sound[aria-pressed="true"] .off { display: none; }
@@ -112,17 +116,10 @@ section { padding: 64px 0; }
 .ticker .track { display: flex; white-space: nowrap; width: max-content; font-family: var(--f-hand); font-weight: 900; font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; padding: 11px 0; animation: slide 30s linear infinite; }
 .ticker span { display: inline-flex; align-items: center; gap: 16px; padding: 0 18px; }
 .ticker .sym { width: 26px; height: 26px; }
-
-/* why people come */
-#why .cards { display: grid; gap: 14px; margin-top: 30px; }
-.worry { position: relative; display: grid; gap: 6px; padding: 20px 18px 18px; border: 2px solid var(--ink); border-radius: var(--r); background: #fff; box-shadow: 4px 4px 0 var(--ink); }
-.worry .sym { position: absolute; right: 14px; top: 14px; width: 40px; height: 40px; }
-.worry .q { font-family: var(--f-hand); font-weight: 900; font-size: 24px; line-height: 1.05; color: var(--coral); padding-right: 52px; }
-.worry h3 { font-family: var(--f-body); font-weight: 800; font-size: 19px; letter-spacing: -0.01em; }
-.worry p { color: var(--soft); font-size: 16px; }
+@keyframes slide { to { transform: translateX(-50%); } }
 
 /* guest videos */
-#stories { padding-bottom: 48px; }
+#stories { padding-bottom: 44px; }
 #stories .num { color: var(--mango); }
 #stories .head { display: flex; align-items: end; justify-content: space-between; gap: 12px; }
 #stories .arrows { display: none; gap: 8px; }
@@ -132,91 +129,91 @@ section { padding: 64px 0; }
 .rail::-webkit-scrollbar { display: none; }
 .story { position: relative; flex: 0 0 min(70vw, 280px); aspect-ratio: 9 / 15; border-radius: var(--r); overflow: hidden; background: #2a2622; scroll-snap-align: center; border: 2px solid var(--paper); padding: 0; text-align: left; color: var(--paper); transform: rotate(var(--tilt, 0deg)); }
 .story video, .story img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.story .shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20, 18, 16, 0.92) 0%, rgba(20, 18, 16, 0.25) 45%, transparent 70%); }
+.story .shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20, 18, 16, 0.94) 0%, rgba(20, 18, 16, 0.3) 45%, transparent 70%); }
 .story .text { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
 .story .quote { font-family: var(--f-hand); font-weight: 900; font-size: 21px; line-height: 1.08; text-wrap: pretty; }
-.story .who { font-size: 13px; color: var(--cream-soft); }
+.story .who { font-size: 14px; font-weight: 600; color: var(--paper); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); }
 .story .snd { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); display: grid; place-items: center; }
 .story .snd svg { width: 18px; height: 18px; }
 .story .snd .on, .story[data-sound="on"] .snd .off { display: none; }
 .story[data-sound="on"] .snd .on { display: block; }
 .story .chip { position: absolute; top: 12px; left: 12px; }
-#stories .hint { margin-top: 8px; font-size: 14px; color: var(--cream-soft); }
 
-/* tonight at pappi */
-#tonight { background: var(--coral); color: var(--ink); }
-#tonight .num { color: var(--ink); }
-#tonight .stamps { display: grid; gap: 14px; margin-top: 30px; }
-.stamp { display: flex; align-items: center; gap: 14px; background: var(--paper); border: 2px solid var(--ink); border-radius: var(--r); padding: 16px 18px; box-shadow: 4px 4px 0 var(--ink); transform: rotate(var(--tilt, 0deg)); }
-.stamp .sym { width: 56px; height: 56px; }
-.stamp b { display: block; font-family: var(--f-hand); font-weight: 900; font-size: 26px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; }
-.stamp span { font-size: 15px; color: var(--soft); }
-#tonight .fine { margin-top: 18px; font-size: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+/* why people come */
+#why .cards { display: grid; gap: 12px; margin-top: 30px; }
+.worry { display: grid; gap: 6px; padding: 20px 18px 18px; }
+.worry .q { font-family: var(--f-hand); font-weight: 900; font-size: 24px; line-height: 1.05; color: var(--coral); }
+.worry h3 { font-family: var(--f-body); font-weight: 800; font-size: 19px; letter-spacing: -0.01em; }
+.worry p { color: var(--soft); font-size: 16px; }
+#more { margin-top: 16px; }
 
 /* in their words */
-#words { background: var(--sand); }
-#words .grid { display: grid; gap: 14px; margin-top: 30px; }
-.say { position: relative; background: #fff; border: 2px solid var(--ink); border-radius: var(--r); padding: 26px 20px 18px; box-shadow: 4px 4px 0 var(--ink); transform: rotate(var(--tilt, 0deg)); }
-.say::before { content: "\201C"; position: absolute; top: -6px; left: 14px; font-family: var(--f-head); font-size: 60px; line-height: 1; color: var(--coral); }
+#words .grid { display: grid; gap: 12px; margin-top: 30px; }
+.say { position: relative; margin: 0; padding: 26px 20px 18px; }
+.say::before { content: "\201C"; position: absolute; top: -6px; left: 14px; font-family: var(--f-head); font-size: 56px; line-height: 1; color: var(--coral); }
 .say p { font-family: var(--f-hand); font-weight: 900; font-size: 26px; line-height: 1.08; letter-spacing: 0.01em; padding-top: 8px; }
 .say.big p { font-size: clamp(30px, 6.6vw, 40px); }
-.say footer { margin-top: 12px; font-size: 13px; color: var(--soft); display: flex; align-items: center; gap: 8px; }
+.say footer { margin-top: 12px; font-size: 14px; color: var(--soft); display: flex; align-items: center; gap: 8px; }
 
-/* one day at pappi */
-#day { background: var(--mint); }
-#day .num { color: var(--ink); }
-#day ol { list-style: none; margin: 30px 0 0; padding: 0; display: grid; gap: 26px; }
+/* tonight at pappi */
+#tonight .stamps { display: grid; gap: 14px; margin-top: 30px; }
+.stamp { display: flex; align-items: center; gap: 14px; background: #fff; border: 2px solid var(--ink); border-radius: var(--r); padding: 16px 18px; box-shadow: 4px 4px 0 var(--ink); transform: rotate(var(--tilt, 0deg)); }
+.stamp .sym { width: 56px; height: 56px; }
+.stamp b { display: block; font-family: var(--f-hand); font-weight: 900; font-size: 26px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; }
+.stamp span { font-size: 16px; color: var(--soft); }
+#tonight .fine { margin-top: 18px; font-size: 14px; color: var(--soft); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+/* one day at pappi: a swipe row on phones, a grid on laptops */
+#day ol { list-style: none; margin: 30px 0 0; padding: 0; }
 .hour { display: grid; gap: 8px; position: relative; }
-.hour img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--r); border: 2px solid var(--ink); background: var(--sand); box-shadow: 4px 4px 0 var(--ink); }
-.hour .t { position: absolute; top: -12px; left: 12px; background: var(--mango); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 12px; font-family: var(--f-hand); font-weight: 900; font-size: 17px; letter-spacing: 0.04em; transform: rotate(-3deg); }
+.hour img { aspect-ratio: 3 / 2; }
+.hour .t { position: absolute; top: -12px; left: 12px; background: var(--mango); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 12px; font-family: var(--f-hand); font-weight: 900; font-size: 17px; letter-spacing: 0.04em; transform: rotate(-3deg); box-shadow: 3px 3px 0 var(--ink); }
 .hour h3 { margin-top: 6px; }
 .hour p { color: var(--soft); font-size: 16px; }
 
 /* the family */
 #family .people { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 14px; margin-top: 30px; }
 .person { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
-.person img { width: min(100%, 150px); aspect-ratio: 1; border-radius: 50%; object-fit: cover; border: 2px solid var(--ink); background: var(--sand); box-shadow: 4px 4px 0 var(--ink); }
+.person img { width: min(100%, 150px); aspect-ratio: 1; border-radius: 50%; object-fit: cover; border: 2px solid var(--ink); background: var(--sand); }
 .person b { font-family: var(--f-hand); font-weight: 900; font-size: 22px; letter-spacing: 0.02em; margin-top: 6px; }
-.person > span { font-size: 14px; color: var(--soft); }
+.person > span { font-size: 15px; color: var(--soft); }
 
 /* were you here */
-#eras { background: var(--mango); }
-#eras .num { color: var(--ink); }
 #eras .grid { display: grid; gap: 20px; margin-top: 30px; }
-.era { display: grid; gap: 8px; transform: rotate(var(--tilt, 0deg)); }
-.era img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r); border: 2px solid var(--ink); background: var(--sand); box-shadow: 4px 4px 0 var(--ink); }
+.era { display: grid; gap: 8px; }
+.era img { aspect-ratio: 4 / 3; }
 .era b { font-family: var(--f-hand); font-weight: 900; font-size: 24px; letter-spacing: 0.02em; }
-.era > span { font-size: 14px; color: var(--soft); display: block; }
+.era > span { font-size: 15px; color: var(--soft); display: block; }
 #eras .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; align-items: center; }
-#eras .fine { font-size: 14px; margin-top: 14px; }
+#eras .fine { font-size: 15px; margin-top: 14px; color: var(--soft); }
 #eras .fine button { background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; color: var(--ink); font-weight: 700; }
 
 /* the basics */
 #basics dl { display: grid; gap: 0; margin: 30px 0 0; border-top: 2px solid var(--ink); }
-#basics .fact { padding: 18px 0; border-bottom: 2px solid var(--ink); display: grid; gap: 4px; }
+#basics .fact { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; }
 #basics dt { font-family: var(--f-hand); font-weight: 900; font-size: 18px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--coral); display: flex; align-items: center; gap: 10px; }
 #basics dd { margin: 0; }
 #basics dd a { color: var(--ink); font-weight: 700; text-underline-offset: 3px; }
 
-/* book direct */
+/* book direct: the one coral block */
 #book { background: var(--coral); text-align: center; }
 #book .num { color: var(--ink); justify-content: center; }
 #book h2 { font-size: clamp(34px, 8.4vw, 76px); }
 #book .lead { color: var(--ink); margin-inline: auto; }
-#book .btn { margin-top: 26px; font-size: 18px; padding: 16px 32px; }
-#book .fine { font-size: 13px; margin-top: 16px; }
+#book .btn { margin-top: 26px; font-size: 18px; padding: 16px 32px; background: var(--paper); }
+#book .fine { font-size: 14px; margin-top: 16px; }
 
 /* footer */
-footer#foot { padding: 40px 0 calc(92px + env(safe-area-inset-bottom, 0px)); font-size: 14px; }
-#foot .word { font-family: var(--f-hand); font-weight: 900; font-size: 28px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--paper); }
-#foot .syms { display: flex; gap: 8px; margin: 12px 0 14px; }
-#foot .syms .sym { width: 32px; height: 32px; }
-#foot .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; }
+footer#foot { padding: 40px 0 calc(92px + env(safe-area-inset-bottom, 0px)); font-size: 15px; }
+#foot .word { font-family: var(--f-hand); font-weight: 900; font-size: 28px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--paper); display: flex; align-items: center; gap: 8px; }
+#foot .word .sym { width: 32px; height: 32px; }
+#foot .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 14px; }
 #foot button, #foot a { background: none; border: 0; padding: 0; color: var(--paper); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+#foot .tiny { margin-top: 14px; font-size: 13px; color: var(--cream-soft); }
 
-/* sticky book bar on phones, shows once the hero scrolls away */
+/* sticky book bar on phones, shows once the hero scrolls away. The header button hides then, so there is one. */
 #stick { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; padding: 10px var(--gut) calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(255, 250, 242, 0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 2px solid var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 12px; transform: translateY(110%); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
-#stick small { font-size: 13px; color: var(--soft); line-height: 1.3; }
+#stick small { font-size: 14px; color: var(--soft); line-height: 1.3; }
 #stick .btn { padding: 10px 18px; min-height: 44px; font-size: 15px; box-shadow: 3px 3px 0 var(--ink); }
 body.away #stick { transform: translateY(0); }
 
@@ -228,21 +225,30 @@ body.away #stick { transform: translateY(0); }
 .reveal { opacity: 0; transform: translateY(14px) rotate(var(--tilt, 0deg)); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .reveal.in { opacity: 1; transform: translateY(0) rotate(var(--tilt, 0deg)); }
 
+@media (max-width: 819px) {
+  body.away #top .btn { display: none; }
+  #why .cards.folded .worry:nth-child(n + 5) { display: none; }
+  #day ol { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 14px var(--gut) 10px; margin: 30px calc(-1 * var(--gut)) 0; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  #day ol::-webkit-scrollbar { display: none; }
+  .hour { flex: 0 0 min(78vw, 320px); scroll-snap-align: center; }
+}
 @media (min-width: 600px) {
   #why .cards, #words .grid, #tonight .stamps { grid-template-columns: repeat(2, 1fr); }
   #eras .grid { grid-template-columns: repeat(3, 1fr); }
   #family .people { grid-template-columns: repeat(3, 1fr); }
 }
 @media (min-width: 820px) {
-  section { padding: 92px 0; }
+  section { padding: 88px 0; }
   #top nav { display: flex; }
-  #hero { padding-top: 56px; }
-  #hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 44px; align-items: center; }
+  #more { display: none; }
+  #hero { padding-top: 40px; }
+  #hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 44px; align-items: center; }
+  #hero h1 { font-size: clamp(42px, 5.9vw, 82px); }
   #hero .frame { margin-top: 0; }
-  #hero .frame .box { aspect-ratio: 4 / 3; }
+  #hero .frame .box { aspect-ratio: 4 / 5; }
   #words .grid { grid-template-columns: repeat(3, 1fr); }
   .say.big { grid-column: span 2; }
-  #day ol { grid-template-columns: repeat(3, 1fr); gap: 32px 20px; }
+  #day ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 20px; }
   #family .people { grid-template-columns: repeat(6, 1fr); }
   #basics dl { grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
   #stories .arrows { display: flex; }
@@ -254,7 +260,6 @@ body.away #stick { transform: translateY(0); }
 @media (hover: hover) {
   .btn:hover { transform: translate(-2px, -2px) rotate(-1.5deg); box-shadow: 6px 6px 0 var(--ink); }
   .dark .btn:hover { box-shadow: 6px 6px 0 var(--paper); }
-  .btn.ink:hover { box-shadow: 6px 6px 0 var(--coral); }
   #top nav a:hover { color: var(--ink); }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -264,12 +269,11 @@ body.away #stick { transform: translateY(0); }
   .ticker .track { animation: none; }
   #stick, .btn { transition: none; }
 }
-@keyframes slide { to { transform: translateX(-50%); } }
 </style>
 </head>
 <body>
 
-<!-- The Pappi symbols. Each one means something real here. Used as stickers, section marks and bullets. -->
+<!-- The Pappi symbols. Each one means something real here. Used as section marks, stickers and the ticker. -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="s-sun" viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="#ffc53d" stroke="var(--sym-line)" stroke-width="5"/><g stroke="var(--sym-line)" stroke-width="5" stroke-linecap="round"><path d="M60 6v12M60 102v12M6 60h12M102 60h12M22 22l8 8M90 90l8 8M22 98l8-8M90 30l8-8"/></g><circle cx="48" cy="56" r="4" fill="var(--sym-line)"/><circle cx="72" cy="56" r="4" fill="var(--sym-line)"/><path d="M46 70Q60 82 74 70" fill="none" stroke="var(--sym-line)" stroke-width="5" stroke-linecap="round"/></symbol>
   <symbol id="s-moon" viewBox="0 0 120 120"><path d="M72 14A46 46 0 1 0 106 72A36 36 0 0 1 72 14Z" fill="#141210" stroke="var(--sym-line)" stroke-width="5" stroke-linejoin="round"/><circle cx="26" cy="30" r="4" fill="#ffc53d"/><circle cx="18" cy="70" r="3" fill="#ff5a3c"/><circle cx="96" cy="22" r="3" fill="#ffc53d"/></symbol>
@@ -291,8 +295,8 @@ body.away #stick { transform: translateY(0); }
 <header id="top">
   <a class="word" href="#hero" aria-label="Pappi Chulo, back to top"><svg class="sym" aria-hidden="true"><use href="#s-sun"/></svg>Pappi Chulo</a>
   <nav aria-label="Page">
-    <a href="#why">Why Pappi</a>
     <a href="#stories">Guests</a>
+    <a href="#why">Why Pappi</a>
     <a href="#tonight">Tonight</a>
     <a href="#day">A day here</a>
     <a href="#eras">Were you here?</a>
@@ -313,6 +317,7 @@ body.away #stick { transform: translateY(0); }
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </a>
       </div>
+      <p class="trust"><span class="sample">To fill in</span> Guest rating, beds from Rs X a night, free cancellation.</p>
     </div>
     <div class="frame">
       <div class="box">
@@ -335,31 +340,13 @@ body.away #stick { transform: translateY(0); }
   </div>
 </section>
 
-<section id="why">
-  <div class="wrap">
-    <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-sun"/></svg>01. Why people come</p>
-    <h2>You know the worry. Pappi fixes it.</h2>
-    <p class="lead">Every guest arrives with one of these in their head. Here is what happens instead.</p>
-    <div class="cards">
-      <article class="worry reveal"><svg class="sym" aria-hidden="true"><use href="#s-bottle"/></svg><p class="q">"I'm travelling alone."</p><h3>Nobody stays alone here.</h3><p>By your first night you have a crew. The bar table does the work, not you.</p></article>
-      <article class="worry reveal"><svg class="sym" aria-hidden="true"><use href="#s-dog"/></svg><p class="q">"I'm a woman travelling alone."</p><h3>You won't walk anywhere alone.</h3><p>A girls' dorm, staff who look out for you, and a crew that moves together at night.</p></article>
-      <article class="worry reveal"><svg class="sym" aria-hidden="true"><use href="#s-disco"/></svg><p class="q">"Where's the party?"</p><h3>You're in it.</h3><p>Pappi is the party. When it winds down, everyone goes on to Hilltop together.</p></article>
-      <article class="worry reveal"><svg class="sym" aria-hidden="true"><use href="#s-sun"/></svg><p class="q">"I don't want to plan every day."</p><h3>Plans make themselves.</h3><p>Beach at one, sunset at the bar at five. Nobody plans it. It just happens.</p></article>
-      <article class="worry reveal"><svg class="sym" aria-hidden="true"><use href="#s-moon"/></svg><p class="q">"I want to party, but I also want to sleep."</p><h3>Quiet dorm.</h3><p>The party is in the courtyard, not in your bed.</p></article>
-      <article class="worry reveal"><svg class="sym" aria-hidden="true"><use href="#s-mango"/></svg><p class="q">"First time in India. It's a lot."</p><h3>Pappi is the soft landing.</h3><p>Staff who tell you where to eat, what the scooter should cost, and which beach today.</p></article>
-      <article class="worry reveal"><svg class="sym" aria-hidden="true"><use href="#s-wheel"/></svg><p class="q">"I'm not 22 anymore."</p><h3>Nobody checks.</h3><p>Eleven years of guests means every age turns up. A lot of them keep coming back.</p></article>
-      <article class="worry reveal"><svg class="sym" aria-hidden="true"><use href="#s-home"/></svg><p class="q">"I want a place that feels like home."</p><h3>Same dogs at the gate.</h3><p>Three eras, staff who know your name by day two, and dogs who remember you a year later.</p></article>
-    </div>
-  </div>
-</section>
-
 <section id="stories" class="dark">
   <div class="wrap">
     <div class="head">
       <div>
-        <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-disco"/></svg>02. Straight from the guests</p>
+        <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-disco"/></svg>01. Straight from the guests</p>
         <h2>Don't take our word for it.</h2>
-        <p class="lead">Short videos of real guests. Tap one for sound. Swipe for more.</p>
+        <p class="lead">Short videos of real guests. Tap one for sound, swipe for more.</p>
       </div>
       <div class="arrows" aria-hidden="true">
         <button type="button" data-rail="-1" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
@@ -367,52 +354,70 @@ body.away #stick { transform: translateY(0); }
       </div>
     </div>
     <div class="rail" id="rail" role="list" aria-label="Guest videos"></div>
-    <p class="hint">Videos play without sound until you tap them.</p>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-sun"/></svg>02. Why people come</p>
+    <h2>You know the worry. Pappi fixes it.</h2>
+    <p class="lead">Every guest arrives with one of these in their head. Here is what happens instead.</p>
+    <div class="cards folded" id="cards">
+      <article class="worry card reveal"><p class="q">"I'm travelling alone."</p><h3>Nobody stays alone here.</h3><p>By your first night you have a crew. The bar table does the work, not you.</p></article>
+      <article class="worry card reveal"><p class="q">"I'm a woman travelling alone."</p><h3>You won't walk anywhere alone.</h3><p>A girls' dorm, staff who look out for you, and nobody goes out at night on their own.</p></article>
+      <article class="worry card reveal"><p class="q">"Where's the party?"</p><h3>You're in it.</h3><p>Pappi is the party. When it winds down, everyone goes on to Hilltop together.</p></article>
+      <article class="worry card reveal"><p class="q">"I don't want to plan every day."</p><h3>Plans make themselves.</h3><p>Beach at one, sunset at the bar at five. Nobody plans it. It just happens.</p></article>
+      <article class="worry card reveal"><p class="q">"I want to party, but I also want to sleep."</p><h3>Quiet dorm.</h3><p>The party is in the courtyard, not in your bed.</p></article>
+      <article class="worry card reveal"><p class="q">"First time in India. It's a lot."</p><h3>Pappi is the soft landing.</h3><p>Staff who tell you where to eat, what the scooter should cost, and which beach today.</p></article>
+      <article class="worry card reveal"><p class="q">"I'm not 22 anymore."</p><h3>Nobody checks.</h3><p>Eleven years of guests means every age turns up. A lot of them keep coming back.</p></article>
+      <article class="worry card reveal"><p class="q">"I want a place that feels like home."</p><h3>Same dogs at the gate.</h3><p>Three eras, staff who know your name by day two, and dogs who remember you a year later.</p></article>
+    </div>
+    <button type="button" class="btn ghost" id="more">Four more worries</button>
+  </div>
+</section>
+
+<section id="words" class="sand">
+  <div class="wrap">
+    <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-mango"/></svg>03. In their words</p>
+    <h2>What people say when they leave.</h2>
+    <p class="lead">From reviews, messages and the guest book. The real ones go here.</p>
+    <div class="grid">
+      <blockquote class="say card big reveal"><p>I booked two nights. I stayed eleven. That's Pappi.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
+      <blockquote class="say card reveal"><p>Pappi in three words: loud, warm, home.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
+      <blockquote class="say card reveal"><p>I came for the party. I came back for the people.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
+      <blockquote class="say card reveal"><p>Every hostel says "family". This one means it.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
+      <blockquote class="say card reveal"><p>I've been to forty hostels. I only ever went back to one.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
+      <blockquote class="say card big reveal"><p>Left with nine new friends from six countries. We still have the group chat.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
+    </div>
   </div>
 </section>
 
 <section id="tonight">
   <div class="wrap">
-    <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-moon"/></svg>03. Tonight at Pappi</p>
+    <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-moon"/></svg>04. Tonight at Pappi</p>
     <h2>Something is always on.</h2>
     <p class="lead">Every night starts at the bar. Where it ends is up to the night.</p>
     <div class="stamps">
-      <div class="stamp reveal" style="--tilt:-1.5deg"><svg class="sym" aria-hidden="true"><use href="#s-speaker"/></svg><div><b>Live DJs</b><span>Techno at the bar, most nights.</span></div></div>
-      <div class="stamp reveal" style="--tilt:1deg"><svg class="sym" aria-hidden="true"><use href="#s-bottle"/></svg><div><b>Game nights</b><span>Beer pong, cards, the lot.</span></div></div>
-      <div class="stamp reveal" style="--tilt:-0.8deg"><svg class="sym" aria-hidden="true"><use href="#s-eye"/></svg><div><b>Hilltop nights</b><span>The whole crew walks up together.</span></div></div>
+      <div class="stamp reveal" style="--tilt:-1.2deg"><svg class="sym" aria-hidden="true"><use href="#s-speaker"/></svg><div><b>Live DJs</b><span>Techno at the bar, most nights.</span></div></div>
+      <div class="stamp reveal" style="--tilt:0.8deg"><svg class="sym" aria-hidden="true"><use href="#s-bottle"/></svg><div><b>Game nights</b><span>Beer pong, cards, the lot.</span></div></div>
+      <div class="stamp reveal" style="--tilt:-0.6deg"><svg class="sym" aria-hidden="true"><use href="#s-eye"/></svg><div><b>Hilltop nights</b><span>The open-air club up the hill, five minutes away. Everyone walks up together.</span></div></div>
     </div>
     <p class="fine"><span class="sample">To fill in</span> The real week's plan goes here: which night is which.</p>
   </div>
 </section>
 
-<section id="words">
-  <div class="wrap">
-    <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-mango"/></svg>04. In their words</p>
-    <h2>What people say when they leave.</h2>
-    <p class="lead">From reviews, messages and the guest book. The real ones go here.</p>
-    <div class="grid">
-      <blockquote class="say big reveal" style="--tilt:-0.6deg"><p>I booked two nights. I stayed eleven. That's Pappi.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
-      <blockquote class="say reveal" style="--tilt:0.8deg"><p>Pappi in three words: loud, warm, home.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
-      <blockquote class="say reveal" style="--tilt:-0.7deg"><p>I came for the party. I came back for the people.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
-      <blockquote class="say reveal" style="--tilt:0.5deg"><p>Every hostel says "family". This one means it.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
-      <blockquote class="say reveal" style="--tilt:-0.5deg"><p>I've been to forty hostels. I only ever went back to one.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
-      <blockquote class="say big reveal" style="--tilt:0.6deg"><p>Left with a crew of nine from six countries. We still have the group chat.</p><footer><span class="sample">Sample</span> Guest name, country</footer></blockquote>
-    </div>
-  </div>
-</section>
-
-<section id="day">
+<section id="day" class="sand">
   <div class="wrap">
     <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-sunrise"/></svg>05. One day at Pappi</p>
     <h2>From a slow morning to sunrise.</h2>
-    <p class="lead">No two days are the same. Most of them go a bit like this.</p>
+    <p class="lead">No two days are the same. Most of them go a bit like this. Swipe through.</p>
     <ol>
-      <li class="hour reveal"><img src="media/day-1.jpg" alt="Sample photo. A real morning photo goes here." loading="lazy" width="1200" height="800"><span class="t">10 am</span><h3>Slow start.</h3><p>Nobody's up. The dogs are. Chai and coffee under the mango tree.</p></li>
-      <li class="hour reveal"><img src="media/day-2.jpg" alt="Sample photo. A real beach photo goes here." loading="lazy" width="1200" height="800"><span class="t">1 pm</span><h3>Beach.</h3><p>Ozran is down the road. Last night's crew is already there.</p></li>
-      <li class="hour reveal"><img src="media/day-3.jpg" alt="Sample photo. A real sunset photo goes here." loading="lazy" width="1200" height="800"><span class="t">5 pm</span><h3>Sunset at the bar.</h3><p>This is where tonight's plan happens, without anyone planning it.</p></li>
-      <li class="hour reveal"><img src="media/day-4.jpg" alt="Sample photo. A real party photo goes here." loading="lazy" width="1200" height="800"><span class="t">9 pm</span><h3>The night starts.</h3><p>A DJ, a game night, a birthday nobody knew about. Something is always on.</p></li>
-      <li class="hour reveal"><img src="media/day-5.jpg" alt="Sample photo. A real late night photo goes here." loading="lazy" width="1200" height="800"><span class="t">1 am</span><h3>Everyone, together.</h3><p>Some nights the floor goes till late. Some nights the whole crew walks to Hilltop.</p></li>
-      <li class="hour reveal"><img src="media/day-6.jpg" alt="Sample photo. A real sunrise photo goes here." loading="lazy" width="1200" height="800"><span class="t">6 am</span><h3>Sunrise with yesterday's strangers.</h3><p>Now they're your people.</p></li>
+      <li class="hour reveal"><img class="photo" src="media/day-1.jpg" alt="Sample photo. A real morning photo goes here." loading="lazy" width="1200" height="800"><span class="t">10 am</span><h3>Slow start.</h3><p>Nobody's up. The dogs are. Chai and coffee under the mango tree.</p></li>
+      <li class="hour reveal"><img class="photo" src="media/day-2.jpg" alt="Sample photo. A real beach photo goes here." loading="lazy" width="1200" height="800"><span class="t">1 pm</span><h3>Beach.</h3><p>Ozran is down the road. Last night's table is already there.</p></li>
+      <li class="hour reveal"><img class="photo" src="media/day-3.jpg" alt="Sample photo. A real sunset photo goes here." loading="lazy" width="1200" height="800"><span class="t">5 pm</span><h3>Sunset at the bar.</h3><p>This is where tonight's plan happens, without anyone planning it.</p></li>
+      <li class="hour reveal"><img class="photo" src="media/day-4.jpg" alt="Sample photo. A real party photo goes here." loading="lazy" width="1200" height="800"><span class="t">9 pm</span><h3>The night starts.</h3><p>A DJ, a game night, a birthday nobody knew about. Something is always on.</p></li>
+      <li class="hour reveal"><img class="photo" src="media/day-5.jpg" alt="Sample photo. A real late night photo goes here." loading="lazy" width="1200" height="800"><span class="t">1 am</span><h3>Everyone, together.</h3><p>Some nights the floor goes till late. Some nights everyone walks up to Hilltop.</p></li>
+      <li class="hour reveal"><img class="photo" src="media/day-6.jpg" alt="Sample photo. A real sunrise photo goes here." loading="lazy" width="1200" height="800"><span class="t">6 am</span><h3>Sunrise with yesterday's strangers.</h3><p>Now they're your people.</p></li>
     </ol>
   </div>
 </section>
@@ -433,18 +438,18 @@ body.away #stick { transform: translateY(0); }
   </div>
 </section>
 
-<section id="eras">
+<section id="eras" class="sand">
   <div class="wrap">
     <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-wheel"/></svg>07. Were you here?</p>
     <h2>Eleven years. Three eras. Thousands of you.</h2>
     <p class="lead">Old guests say Pappi has had three eras. Send us your old photos and find yourself on this page.</p>
     <div class="grid">
-      <div class="era reveal" style="--tilt:-1.5deg"><img src="media/era-1.jpg" alt="Sample. An old photo from the first era goes here." loading="lazy" width="900" height="675"><b>Era one</b><span>Years to fill in. <span class="sample">Sample</span></span></div>
-      <div class="era reveal" style="--tilt:1deg"><img src="media/era-2.jpg" alt="Sample. An old photo from the second era goes here." loading="lazy" width="900" height="675"><b>Era two</b><span>Years to fill in. <span class="sample">Sample</span></span></div>
-      <div class="era reveal" style="--tilt:-0.8deg"><img src="media/era-3.jpg" alt="Sample. A photo from the current era goes here." loading="lazy" width="900" height="675"><b>Era three</b><span>Now. <span class="sample">Sample</span></span></div>
+      <div class="era reveal"><img class="photo" src="media/era-1.jpg" alt="Sample. An old photo from the first era goes here." loading="lazy" width="900" height="675"><b>Era one</b><span>Years to fill in. <span class="sample">Sample</span></span></div>
+      <div class="era reveal"><img class="photo" src="media/era-2.jpg" alt="Sample. An old photo from the second era goes here." loading="lazy" width="900" height="675"><b>Era two</b><span>Years to fill in. <span class="sample">Sample</span></span></div>
+      <div class="era reveal"><img class="photo" src="media/era-3.jpg" alt="Sample. A photo from the current era goes here." loading="lazy" width="900" height="675"><b>Era three</b><span>Now. <span class="sample">Sample</span></span></div>
     </div>
     <div class="row">
-      <button type="button" class="btn ink" data-soon="The link for sending old photos">Send us your old photos</button>
+      <button type="button" class="btn" data-soon="The link for sending old photos">Send us your old photos</button>
       <button type="button" class="btn ghost" data-soon="The Instagram link">Follow on Instagram</button>
     </div>
     <p class="fine">In a photo and want it gone? <button type="button" data-soon="The remove my photo link">One message and it's gone.</button></p>
@@ -457,7 +462,8 @@ body.away #stick { transform: translateY(0); }
     <h2>Where, what, how much.</h2>
     <dl>
       <div class="fact"><dt>Where</dt><dd>Ozran Beach Road, next to 9 Bar, Vagator, North Goa. <a href="https://www.google.com/maps/search/?api=1&amp;query=Pappi+Chulo+Vagator" target="_blank" rel="noopener">Open in Google Maps</a></dd></div>
-      <div class="fact"><dt>Beds <span class="sample">To fill in</span></dt><dd>Dorms, a girls' dorm, a quiet dorm and private rooms. New rooms are being built now. Prices go here.</dd></div>
+      <div class="fact"><dt>Getting here <span class="sample">To fill in</span></dt><dd>Taxi times from Mopa and Dabolim airports, and from Thivim station, go here.</dd></div>
+      <div class="fact"><dt>Beds <span class="sample">To fill in</span></dt><dd>Dorms, a girls' dorm, a quiet dorm and private rooms. New rooms are being built now. Prices from Rs X a night go here.</dd></div>
       <div class="fact"><dt>Nights <span class="sample">To fill in</span></dt><dd>DJ nights, game nights, Hilltop nights. The week's plan goes here.</dd></div>
       <div class="fact"><dt>Check in <span class="sample">To fill in</span></dt><dd>Check in and check out times go here.</dd></div>
       <div class="fact"><dt>House rules <span class="sample">To fill in</span></dt><dd>Short and fair. Be good to the staff, the dogs and each other. The rest goes here.</dd></div>
@@ -470,24 +476,23 @@ body.away #stick { transform: translateY(0); }
   <div class="wrap">
     <p class="num"><svg class="sym" aria-hidden="true"><use href="#s-bottle"/></svg>09. Book direct</p>
     <h2>Book straight with Pappi.</h2>
-    <p class="lead">No booking site in the middle. You pay less, Pappi keeps more. Same beds, same crew.</p>
-    <button type="button" class="btn ink" data-book>Book a bed</button>
+    <p class="lead">No booking site in the middle. You pay less, Pappi keeps more. Same beds, same people.</p>
+    <button type="button" class="btn" data-book>Book a bed</button>
     <p class="fine">The button opens Pappi's own booking page once we add the link.</p>
   </div>
 </section>
 
 <footer id="foot" class="dark">
   <div class="wrap">
-    <span class="word">Pappi Chulo</span>
+    <span class="word"><svg class="sym" aria-hidden="true"><use href="#s-sun"/></svg>Pappi Chulo</span>
     <p>Party hostel. Ozran Beach Road, next to 9 Bar, Vagator, North Goa.</p>
-    <div class="syms" aria-hidden="true"><svg class="sym"><use href="#s-sun"/></svg><svg class="sym"><use href="#s-moon"/></svg><svg class="sym"><use href="#s-mango"/></svg><svg class="sym"><use href="#s-disco"/></svg><svg class="sym"><use href="#s-dog"/></svg><svg class="sym"><use href="#s-cat"/></svg><svg class="sym"><use href="#s-eye"/></svg><svg class="sym"><use href="#s-sunrise"/></svg></div>
     <div class="links">
       <button type="button" data-soon="The Instagram link">Instagram</button>
       <button type="button" data-soon="The WhatsApp link">WhatsApp</button>
       <button type="button" data-soon="The email address">Email</button>
       <a href="walk/">Peek at the 360 walk we're building</a>
     </div>
-    <p style="margin-top:14px;font-size:12px;color:var(--cream-soft)">Test version. Nothing on this page is real yet.</p>
+    <p class="tiny">Test version. Nothing on this page is real yet.</p>
   </div>
 </footer>
 
@@ -528,11 +533,11 @@ body.away #stick { transform: translateY(0); }
     else toast("Test version: Pappi's booking page opens here once we add the link.");
   }));
   $$("[data-soon]").forEach((b) => b.addEventListener("click", () => toast(`${b.dataset.soon} goes here once the team sends it.`)));
+  $("#more").addEventListener("click", () => { $("#cards").classList.remove("folded"); $("#more").hidden = true; $$("#cards .reveal").forEach((el) => el.classList.add("in")); });
 
-  /* ---------- hero video: phone file on tall screens, laptop file on wide ones ---------- */
+  /* ---------- hero video: phone file on narrow screens, laptop file on wide ones ---------- */
   const hero = $("#hero-video");
-  const tall = innerWidth < 820;
-  const heroFile = `media/hero-${tall ? "phone" : "laptop"}`;
+  const heroFile = `media/hero-${innerWidth < 820 ? "phone" : "laptop"}`;
   hero.poster = `${heroFile}.jpg`;
   if (!reduced) {
     hero.src = `${heroFile}.mp4`;
