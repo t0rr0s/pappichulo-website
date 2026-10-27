@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://t0rr0s.github.io/pappichulo-website/sitemap.xml

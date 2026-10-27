@@ -37,7 +37,7 @@ HOW = [
 ORDER = [
     ("1", "Today", "Cloudbeds booking link, and who owns the domain name (section F)."),
     ("2", "This week", "Guest videos (section A). Guests are here now, and every guest who leaves is a video we missed."),
-    ("3", "This week", "Party and friends clips and photos (section B)."),
+    ("3", "This week", "Straight-on photos of every graffiti wall and the gate sign (section B). The look of the whole site is built from them. Then party and friends clips and photos."),
     ("4", "Start now", "Written words from guests (section C) and old photos from all 11 years (section D)."),
     ("5", "Next week", "Staff and dogs (section B), logo and brand files (section E)."),
     ("6", "After launch", "360 shots for the walk (section G). Not now."),
@@ -73,7 +73,7 @@ SECTIONS = [
         ("Photos", [
             "Your 30 best photos from this season: people laughing, groups, the bar at sunset, the gate at night.",
             "A real day at Pappi: one photo each for the slow morning, the beach, sunset at the bar, the night starting, late night, sunrise.",
-            "Every painting and graffiti wall: one straight-on photo each, plus who painted it and when (rough year is fine).",
+            "<b>Every painting and graffiti wall: one straight-on photo each in daylight,</b> plus who painted it and when (rough year is fine). The site's stickers and symbols are drawn from these, so this comes first.",
             "Food and drinks: your 5 best dishes and 5 best drinks.",
             "The rooms: only after the rebuild is finished.",
         ]),

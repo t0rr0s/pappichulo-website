@@ -9,8 +9,10 @@ The page shows what Pappi is like through its guests: short videos of them talki
 Every video, photo, quote and name is a **sample** until the real ones arrive. The page says so at the top. The list of what the team needs to collect is in `docs/assets-needed.md` (also as a PDF).
 
 ## What's where
-- `index.html`: the home page (one file).
+- `index.html`: the home page (one file). The Pappi symbols (sun, moon, mango, disco ball, dog, cat and so on) are drawn at the top of it.
 - `media/`: the sample videos and photos for the home page. Real files replace them with the same names.
+- `fonts/`: the three fonts (Dela Gothic One, Londrina Solid, Bricolage Grotesque), saved here so the page does not wait for Google.
+- `404.html`, `robots.txt`, `sitemap.xml`: the small files a real site needs.
 - `tools/make_home_placeholders.py`: makes the sample videos and photos.
 - `tools/make_asset_list.py`: builds the "what we need from the team" list (`docs/`).
 - `walk/`: the 360 walk, parked until after launch. Open `walk/` to try it.

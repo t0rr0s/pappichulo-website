@@ -19,15 +19,17 @@ OUT = os.path.join(ROOT, "media")
 FONT_DIR = os.environ.get("FONT_DIR", "/usr/share/fonts/truetype/google-fonts")
 FPS = 24
 
-INK = (24, 15, 34)
-PINK = (255, 58, 170)
-SUN = (255, 210, 0)
-CYAN = (34, 200, 224)
-PAPER = (255, 248, 238)
-PURPLE = (120, 50, 220)
-ORANGE = (255, 112, 24)
-GREEN = (60, 200, 120)
+# The Pappi palette (same as index.html): paper, ink, one hot coral, mango and mint for stickers.
+INK = (20, 18, 16)
+NIGHT = (20, 18, 16)
+PAPER = (255, 250, 242)
+SAND = (243, 235, 220)
+CLAY = (255, 90, 60)  # coral
+MANGO = (255, 197, 61)
+GREEN = (143, 227, 192)  # mint
+SEA = (60, 130, 200)
 WARM = (255, 184, 96)
+AMBER = (255, 150, 60)
 
 
 def font(size, style="Bold"):
@@ -49,7 +51,7 @@ def glow(img, cx, cy, r, col, k=1.0):
     img += (gy[:, None] * gx[None, :])[..., None] * (np.array(col, np.float32) * k)
 
 
-def chip(d, xy, text, bg=SUN, fg=INK, size=22):
+def chip(d, xy, text, bg=MANGO, fg=INK, size=22):
     f = font(size)
     tw = d.textlength(text, font=f)
     x, y = xy
@@ -131,7 +133,7 @@ def make_lights(W, H, n, seed, cols):
     return out
 
 
-def party_frame(W, H, t, L, top, bottom, big, small, y_frac):
+def party_frame(W, H, t, L, top, bottom, big, small, y_frac, chip_text="SAMPLE"):
     img = gradient(W, H, top, bottom)
     for (x0, y0, vx, r, col, ph) in L:
         x = (x0 + vx * t + r) % (W + 2 * r) - r
@@ -139,29 +141,29 @@ def party_frame(W, H, t, L, top, bottom, big, small, y_frac):
         k = 0.7 + 0.3 * abs(math.sin(2 * math.pi * 1.0 * t + ph))  # 120 bpm pulse
         glow(img, x, y, r, col, 0.9 * k)
         glow(img, x, y, r * 0.22, PAPER, 0.6 * k)
-    return np.asarray(label(to_pil(img), big, small, y_frac))
+    return np.asarray(label(to_pil(img), big, small, y_frac, chip_text=chip_text))
 
 
 def hero(name, W, H, seconds=8):
-    L = make_lights(W, H, 22, 5, [WARM, PINK, CYAN, SUN, PURPLE, WARM])
-    frames = (party_frame(W, H, f / FPS, L, INK, (70, 20, 80), "SAMPLE VIDEO", "A real Pappi night goes here", 0.5)
+    L = make_lights(W, H, 22, 5, [WARM, AMBER, MANGO, PAPER, CLAY, WARM])
+    frames = (party_frame(W, H, f / FPS, L, NIGHT, (70, 38, 28), "SAMPLE VIDEO", "A real Pappi night goes here", 0.3)
               for f in range(seconds * FPS))
-    first = party_frame(W, H, 0, L, INK, (70, 20, 80), "SAMPLE VIDEO", "A real Pappi night goes here", 0.5)
+    first = party_frame(W, H, 0, L, NIGHT, (70, 38, 28), "SAMPLE VIDEO", "A real Pappi night goes here", 0.3)
     Image.fromarray(first).save(os.path.join(OUT, name + ".jpg"), quality=80, optimize=True, progressive=True)
     write_video(frames, os.path.join(OUT, name + ".mp4"), W, H)
 
 
-STORY_THEMES = [((40, 10, 60), (236, 38, 143)), ((10, 30, 60), (0, 150, 200)), ((50, 20, 10), (255, 112, 24)),
-                ((20, 40, 20), (60, 200, 120)), ((30, 10, 70), (150, 64, 232)), ((60, 40, 0), (255, 210, 0))]
+STORY_THEMES = [((40, 20, 16), CLAY), ((16, 40, 34), (40, 150, 110)), ((60, 40, 14), MANGO),
+                ((30, 20, 15), AMBER), ((40, 36, 32), SAND), ((20, 18, 16), (120, 50, 40))]
 
 
 def story(i, W=540, H=960, seconds=5):
     top, bottom = STORY_THEMES[i % len(STORY_THEMES)]
-    L = make_lights(W, H, 10, 100 + i, [PAPER, WARM, SUN])
+    L = make_lights(W, H, 10, 100 + i, [PAPER, WARM, MANGO])
     big, small = f"SAMPLE\nGUEST VIDEO {i + 1}", "A real guest talking goes here"
-    first = party_frame(W, H, 0, L, top, bottom, big, small, 0.38)
+    first = party_frame(W, H, 0, L, top, bottom, big, small, 0.38, None)
     Image.fromarray(first).save(os.path.join(OUT, f"story-{i + 1}.jpg"), quality=78, optimize=True, progressive=True)
-    write_video((party_frame(W, H, f / FPS, L, top, bottom, big, small, 0.38) for f in range(seconds * FPS)),
+    write_video((party_frame(W, H, f / FPS, L, top, bottom, big, small, 0.38, None) for f in range(seconds * FPS)),
                 os.path.join(OUT, f"story-{i + 1}.mp4"), W, H)
 
 
@@ -169,9 +171,9 @@ def story(i, W=540, H=960, seconds=5):
 DAY = [  # (file, time, sky top, sky bottom, sun colour and height, number of string lights, people)
     ("day-1", "10 am", (90, 160, 235), (225, 238, 250), (PAPER, 0.3), 0, 2),
     ("day-2", "1 pm", (40, 120, 230), (160, 210, 245), (PAPER, 0.12), 0, 7),
-    ("day-3", "5 pm", (90, 50, 140), (255, 140, 60), (SUN, 0.82), 0, 8),
-    ("day-4", "9 pm", (18, 10, 40), (80, 30, 90), None, 24, 12),
-    ("day-5", "1 am", (8, 6, 20), (40, 10, 60), None, 30, 16),
+    ("day-3", "5 pm", (90, 60, 110), (255, 150, 70), (MANGO, 0.82), 0, 8),
+    ("day-4", "9 pm", (24, 18, 36), (110, 60, 50), None, 24, 12),
+    ("day-5", "1 am", (12, 9, 12), (50, 28, 22), None, 30, 16),
     ("day-6", "6 am", (60, 70, 140), (255, 190, 120), (WARM, 0.86), 0, 4),
 ]
 
@@ -187,7 +189,7 @@ def scene(W, H, top, bottom, sun, n_lights, people, seed, big, small, chip_text=
     for _ in range(n_lights):
         x = rng.uniform(0, W)
         y = H * 0.35 + 0.08 * H * math.sin(x / W * 9) + rng.uniform(-8, 8)
-        glow(img, x, y, W * 0.012, [WARM, PINK, CYAN, SUN][int(rng.integers(4))], 1.4)
+        glow(img, x, y, W * 0.012, [WARM, MANGO, PAPER, AMBER][int(rng.integers(4))], 1.4)
     pil = to_pil(img)
     d = ImageDraw.Draw(pil)
     dark = tuple(int(c * 0.35) for c in bottom) if n_lights else (40, 30, 50)
@@ -205,8 +207,8 @@ def day_photos(W=1200, H=800):
 
 
 def era_photos(W=900, H=675):
-    looks = [("ERA ONE", (120, 90, 50), (200, 170, 120), 1), ("ERA TWO", (60, 20, 90), (240, 90, 150), 2),
-             ("ERA THREE", (18, 10, 40), (120, 30, 120), 3)]
+    looks = [("ERA ONE", (120, 90, 50), (200, 170, 120), 1), ("ERA TWO", (40, 30, 50), (230, 120, 80), 2),
+             ("ERA THREE", NIGHT, (95, 50, 40), 3)]
     for i, (big, top, bottom, seed) in enumerate(looks):
         pil = scene(W, H, top, bottom, None, 18, 12, 40 + i, big, "An old photo goes here", chip_text="SAMPLE OLD PHOTO")
         if i == 0:  # faded print
@@ -222,37 +224,35 @@ def era_photos(W=900, H=675):
 
 
 def family(n_people=4, n_dogs=2, S=480):
-    cols = [PINK, CYAN, SUN, GREEN, ORANGE, PURPLE]
+    cols = [CLAY, GREEN, MANGO, SEA, (120, 90, 70), (255, 150, 60)]
     for i in range(n_people + n_dogs):
-        pil = Image.new("RGB", (S, S), INK)
-        d = ImageDraw.Draw(pil)
         col = cols[i % len(cols)]
-        d.ellipse([S * 0.08, S * 0.08, S * 0.92, S * 0.92], fill=col)
+        pil = Image.new("RGB", (S, S), col)
+        d = ImageDraw.Draw(pil)
         if i < n_people:
-            d.ellipse([S * 0.36, S * 0.24, S * 0.64, S * 0.52], fill=INK)
-            d.rounded_rectangle([S * 0.25, S * 0.58, S * 0.75, S * 0.92], radius=S * 0.12, fill=INK)
-            d.rectangle([0, S * 0.92, S, S], fill=INK)
+            d.ellipse([S * 0.36, S * 0.2, S * 0.64, S * 0.48], fill=PAPER)
+            d.rounded_rectangle([S * 0.22, S * 0.56, S * 0.78, S * 1.1], radius=S * 0.14, fill=PAPER)
             text = f"STAFF {i + 1}"
         else:
-            d.ellipse([S * 0.3, S * 0.3, S * 0.7, S * 0.7], fill=INK)  # head
-            d.ellipse([S * 0.22, S * 0.26, S * 0.38, S * 0.56], fill=INK)  # ears
-            d.ellipse([S * 0.62, S * 0.26, S * 0.78, S * 0.56], fill=INK)
-            d.ellipse([S * 0.44, S * 0.5, S * 0.56, S * 0.6], fill=col)  # nose
+            d.ellipse([S * 0.3, S * 0.28, S * 0.7, S * 0.68], fill=PAPER)  # head
+            d.ellipse([S * 0.22, S * 0.24, S * 0.38, S * 0.54], fill=PAPER)  # ears
+            d.ellipse([S * 0.62, S * 0.24, S * 0.78, S * 0.54], fill=PAPER)
+            d.ellipse([S * 0.44, S * 0.48, S * 0.56, S * 0.58], fill=col)  # nose
             text = f"DOG {i - n_people + 1}"
         label(pil, text, "", 0.86, big_size=S * 0.09)
         pil.save(os.path.join(OUT, f"family-{i + 1}.jpg"), quality=80, optimize=True)
 
 
 def og(W=1200, H=630):
-    L = make_lights(W, H, 16, 9, [WARM, PINK, CYAN, SUN])
-    img = gradient(W, H, INK, (70, 20, 80))
+    L = make_lights(W, H, 16, 9, [WARM, AMBER, MANGO, PAPER])
+    img = gradient(W, H, NIGHT, (70, 38, 28))
     for (x0, y0, _vx, r, col, _ph) in L:
         glow(img, x0, y0, r, col, 0.8)
     pil = to_pil(img)
     d = ImageDraw.Draw(pil)
     f1, f2 = font(96, "BoldItalic"), font(40)
-    for text, f, y, col in [("PAPPI CHULO", f1, 190, PINK), ("Come alone. Leave with a crew.", f2, 330, PAPER),
-                            ("Vagator, North Goa", font(30), 400, SUN)]:
+    for text, f, y, col in [("PAPPI CHULO", f1, 190, PAPER), ("Come alone. Leave with a crew.", f2, 330, PAPER),
+                            ("Vagator, North Goa", font(30), 400, MANGO)]:
         tw = d.textlength(text, font=f)
         d.text(((W - tw) / 2, y), text, font=f, fill=col, stroke_width=4, stroke_fill=INK)
     pil.save(os.path.join(OUT, "og.jpg"), quality=82, optimize=True)

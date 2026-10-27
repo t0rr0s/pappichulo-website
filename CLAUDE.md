@@ -15,6 +15,15 @@ The website for Pappi Chulo, a party hostel on Ozran Beach Road (next to 9 Bar),
 - `index.html` is this page. Sample media comes from `tools/make_home_placeholders.py` and lives in `media/`. Real files replace them with the same names.
 - The list of what the team must collect is `docs/assets-needed.md` (and the PDF), built by `tools/make_asset_list.py`.
 
+## Look and feel: the graffiti wall (decided Oct 2026, after Vru rejected a neon version and a serif boutique version)
+- Fun but classy, the way award-winning hostel and hotel sites do it (The Hoxton, citizenM, Mama Shelter, The Social Hub): a calm paper frame, chunky black type, ONE bright colour, and the fun living in the content: stickers, symbols, a ticker, cheeky copy, a Book button with a hard shadow that wobbles. Not neon, not glow, not a serif boutique look.
+- Colours (CSS variables in `index.html`): paper `#fffaf2`, sand `#f3ebdc`, ink `#141210`, coral `#ff5a3c` (the one bright colour: buttons, numbers, worry quotes), mango `#ffc53d` and mint `#8fe3c0` (stickers and one section block each). Dark sections use ink, not black.
+- Type: Dela Gothic One for the big headlines (uppercase), Londrina Solid 900 for the hand-lettered bits (the name, stickers, quotes, labels, section numbers), Bricolage Grotesque for body text. All three saved in `fonts/` (woff2), loaded by `fonts/fonts.css`, not from Google's servers.
+- The Pappi symbols: a small family of simple shapes (sun, moon, mango, disco ball, speaker, dog, cat, eye for Hilltop, bottle, sunrise, three-era wheel, home) drawn as SVG symbols at the top of `index.html`. Thick line, flat fills. Used as section marks, card corners, ticker, footer, favicon. To be redrawn in the style of the real graffiti once Vru sends wall photos.
+- Cards and photos: 2px ink border, 18px radius, a 4px hard shadow, a tiny tilt. Hard shadows, never soft blur.
+- The real graffiti on Pappi's walls is the illustration layer of the site (like The Hoxton's local artists). Once photos arrive, cut-outs of the real art replace or join the symbols.
+- The sample media in `media/` follows the same palette. If the palette changes, change `tools/make_home_placeholders.py` too and re-run it.
+
 ## Later: the 360 walk (Day Pappi, Night Pappi)
 Parked until after launch. It lives in `walk/` and still works. Keep it, don't delete it.
 - A 360 walk through the party and common areas (gate, bar under the mango tree, graffiti wall, dance floor). Never empty dorm tours.
