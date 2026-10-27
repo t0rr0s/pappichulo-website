@@ -19,15 +19,15 @@ OUT = os.path.join(ROOT, "media")
 FONT_DIR = os.environ.get("FONT_DIR", "/usr/share/fonts/truetype/google-fonts")
 FPS = 24
 
-# The Pappi palette (same as index.html): paper, ink, one hot coral, mango and mint for stickers.
-INK = (20, 18, 16)
-NIGHT = (20, 18, 16)
-PAPER = (255, 250, 242)
-SAND = (243, 235, 220)
-CLAY = (255, 90, 60)  # coral
-MANGO = (255, 197, 61)
-GREEN = (143, 227, 192)  # mint
-SEA = (60, 130, 200)
+# The Pappi palette (same as index.html): paper, ink and three flat street-poster colours.
+INK = (20, 20, 20)
+NIGHT = (20, 20, 20)
+PAPER = (246, 242, 234)
+SAND = (236, 230, 218)
+CLAY = (255, 59, 141)  # pink
+MANGO = (255, 210, 0)  # yellow
+GREEN = (43, 92, 255)  # blue
+SEA = (43, 92, 255)
 WARM = (255, 184, 96)
 AMBER = (255, 150, 60)
 
