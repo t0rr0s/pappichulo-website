@@ -1,5 +1,7 @@
 # Pappi Chulo home page: the design brief
 
+**Update, Oct 27 2026: the street poster version below was replaced by "the living wall". The real graffiti characters host the sections, every card is a glossy sticker like the art, the colours are the brand book's. See the "Look and feel" section of CLAUDE.md. The argument, the sections and the feeling curve below still hold.**
+
 Written following the taste-skill run (directions dealt from its library of 247 award sites), Anthropic's frontend-design plan and check, and scroll-craft's feeling curve. Self-authored under Vru's creative delegation ("please be creative"), with his fixed choices: Londrina Solid and Dela Gothic One, the graffiti as the illustration layer, party symbols, fun but classy.
 
 ## What is real about Pappi (the inventory)

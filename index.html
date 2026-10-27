@@ -5,379 +5,534 @@
 <script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pappi Chulo, party hostel in Vagator, Goa</title>
-<meta name="description" content="Pappi Chulo is a party hostel on Ozran Beach Road, Vagator, North Goa. Nobody leaves alone. Book direct with Pappi.">
-<meta name="theme-color" content="#ff3b8d">
+<meta name="description" content="Pappi Chulo is the house where Goa never lets you leave. Party hostel on Ozran Beach Road, Vagator, North Goa. Come for a night. Stay for the story. Book direct.">
+<meta name="theme-color" content="#ff4f9a">
 <link rel="canonical" href="https://t0rr0s.github.io/pappichulo-website/">
 <!-- Sharing preview. Change the addresses when the site moves to its own domain. -->
 <meta property="og:title" content="Pappi Chulo, Vagator">
-<meta property="og:description" content="Nobody leaves alone. A party hostel in Vagator, North Goa, for eleven years.">
+<meta property="og:description" content="Come for a night. Stay for the story. A party hostel in Vagator, North Goa, for eleven years.">
 <meta property="og:image" content="https://t0rr0s.github.io/pappichulo-website/media/og.jpg">
 <meta property="og:url" content="https://t0rr0s.github.io/pappichulo-website/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ff3b8d'/%3E%3Ccircle cx='32' cy='32' r='16' fill='%23ffd200'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff4f9a' stroke='%23111' stroke-width='5'/%3E%3Cellipse cx='22' cy='20' rx='9' ry='5' fill='%23fff' transform='rotate(-20 22 20)'/%3E%3C/svg%3E">
 <link rel="preload" href="fonts/DelaGothicOne-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/LondrinaSolid-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="media/art/gorilla.webp" as="image" media="(min-width: 820px)">
+<link rel="preload" href="media/art/gorilla-phone.webp" as="image" media="(max-width: 819px)">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="scenes/stage.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Hostel","name":"Pappi Chulo","description":"Party hostel on Ozran Beach Road, Vagator, North Goa. Nobody leaves alone.","url":"https://t0rr0s.github.io/pappichulo-website/","image":"https://t0rr0s.github.io/pappichulo-website/media/og.jpg","address":{"@type":"PostalAddress","streetAddress":"Ozran Beach Road, next to 9 Bar","addressLocality":"Vagator","addressRegion":"Goa","addressCountry":"IN"}}
+{"@context":"https://schema.org","@type":"Hostel","name":"Pappi Chulo","description":"Party hostel on Ozran Beach Road, Vagator, North Goa. Come for a night. Stay for the story.","url":"https://t0rr0s.github.io/pappichulo-website/","image":"https://t0rr0s.github.io/pappichulo-website/media/og.jpg","address":{"@type":"PostalAddress","streetAddress":"Ozran Beach Road, next to 9 Bar","addressLocality":"Vagator","addressRegion":"Goa","addressCountry":"IN"}}
 </script>
 <style>
-/* The street poster. Flat colour walls that meet edge to edge, the heaviest type, the guests' own
-   words pasted on like posters. Dela Gothic One for headlines, Londrina Solid for everything else.
-   Square corners. No outlines, no shadows, no gradients. One flat button colour.
-   Phone first: its own composition, then the wide one from 820px. See docs/design-brief.md. */
+/* The living wall. The page is one long cream wall of Pappi. The real graffiti characters host each
+   part. Everything that is a "thing" (card, button, photo, quote) is a glossy sticker like the art:
+   thick black outline, round corners, a hard dark edge underneath, one white shine. Coloured bands
+   drip into the next section. Dela Gothic One for headlines, Londrina Solid for everything else.
+   Colours come from the brand book, matched to the walls. Phone first. */
 :root {
-  --paper: #f6f2ea;
-  --ink: #141414;
-  --pink: #ff3b8d;
-  --yellow: #ffd200;
-  --blue: #2b5cff;
-  --ground: var(--paper);
+  --cream: #faf7f0;
+  --ink: #111111;
+  --pink: #ff4f9a;
+  --blue: #2fb4f0;
+  --green: #8fd14f;
+  --orange: #ff8a1f;
+  --purple: #8b5cf6;
+  --yellow: #ffd23f;
+  --line: 3px;
   --font-display: "Dela Gothic One", "Arial Black", Impact, sans-serif;
   --font-text: "Londrina Solid", "Arial Narrow", Impact, sans-serif;
-  --m: clamp(20px, 2vw, 28px);
+  --m: clamp(18px, 3vw, 40px);
   --ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-html, body { margin: 0; background: var(--paper); color: var(--ink); }
-body { font-family: var(--font-text); font-weight: 400; font-size: 20px; line-height: 1.4; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
-img, video { display: block; max-width: 100%; height: auto; }
+html, body { margin: 0; background: var(--cream); color: var(--ink); }
+body { font-family: var(--font-text); font-weight: 400; font-size: 20px; line-height: 1.4; -webkit-tap-highlight-color: transparent; overflow-x: clip; }
+img, video, svg { display: block; max-width: 100%; height: auto; }
 button { font: inherit; color: inherit; cursor: pointer; }
 a { color: inherit; }
 ::selection { background: var(--ink); color: var(--yellow); }
 :focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }
-.on-blue :focus-visible, .on-ink :focus-visible { outline-color: var(--paper); }
-h1, h2 { margin: 0; font-family: var(--font-display); font-weight: 400; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase; text-wrap: balance; }
-h2 { font-size: clamp(38px, 7.6vw, 108px); }
-h3 { margin: 0; font-family: var(--font-text); font-weight: 900; font-size: 30px; line-height: 1; letter-spacing: 0.01em; }
+.on-ink :focus-visible, .on-purple :focus-visible { outline-color: var(--cream); }
+h1, h2 { margin: 0; font-family: var(--font-display); font-weight: 400; line-height: 0.92; letter-spacing: -0.02em; text-transform: uppercase; text-wrap: balance; }
+h1 { font-size: clamp(36px, 5.2vw, 84px); }
+h2 { font-size: clamp(34px, 5.6vw, 84px); }
+h3 { margin: 0; font-family: var(--font-text); font-weight: 900; font-size: 28px; line-height: 1; }
 p { margin: 0; }
-.wall { padding: clamp(64px, 9vw, 120px) var(--m); }
-.pink { background: var(--pink); color: var(--ink); }
-.yellow { background: var(--yellow); color: var(--ink); }
-.blue { background: var(--blue); color: var(--paper); }
-.on-ink { background: var(--ink); color: var(--paper); }
-.paper { background: var(--paper); color: var(--ink); }
-.lede { font-size: 22px; line-height: 1.35; max-width: 42ch; margin-top: 20px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; border: 0; padding: 18px 28px; min-height: 60px; background: var(--yellow); color: var(--ink); font-family: var(--font-text); font-weight: 900; font-size: 24px; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; transition: transform 120ms var(--ease); }
-.btn.ink { background: var(--ink); color: var(--paper); }
-.btn.pink { background: var(--pink); color: var(--ink); }
-.btn:active { transform: scale(0.97); }
+.wrap { max-width: 1320px; margin: 0 auto; padding: 0 var(--m); position: relative; }
+.band { position: relative; padding: clamp(72px, 9vw, 130px) 0; border-top: var(--line) solid var(--ink); border-bottom: var(--line) solid var(--ink); }
+.band.cream { background: var(--cream); border-color: transparent; }
+.on-ink { background: var(--ink); color: var(--cream); }
+.on-purple { background: var(--purple); color: var(--cream); }
+.on-blue { background: var(--blue); color: var(--ink); }
+.on-yellow { background: var(--yellow); color: var(--ink); }
+.on-pink { background: var(--pink); color: var(--ink); }
+.lede { font-size: 23px; line-height: 1.3; max-width: 40ch; margin-top: 18px; }
+.fine { font-size: 17px; opacity: 0.8; margin-top: 18px; }
+
+/* the sticker: the one shape the whole page is made of */
+.stk { position: relative; background: var(--c, #fff); color: var(--ink); border: var(--line) solid var(--ink); border-radius: 26px; box-shadow: 6px 7px 0 var(--ink); transform: rotate(var(--r, 0deg)); }
+.stk::before { content: ""; position: absolute; right: 5%; top: 7%; width: 12%; max-width: 54px; height: 8%; max-height: 18px; background: #fff; opacity: 0.9; border-radius: 50%; transform: rotate(-18deg); pointer-events: none; }
+.stk.purple { --c: var(--purple); color: var(--cream); }
+.stk.pink { --c: var(--pink); }
+.stk.blue { --c: var(--blue); }
+.stk.green { --c: var(--green); }
+.stk.orange { --c: var(--orange); }
+.stk.yellow { --c: var(--yellow); }
+.stk.cream { --c: var(--cream); }
+
+/* buttons: jelly pills with a shine */
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: var(--line) solid var(--ink); border-radius: 999px; padding: 16px 30px; min-height: 62px; background: var(--pink); color: var(--ink); font-family: var(--font-text); font-weight: 900; font-size: 25px; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; box-shadow: 5px 6px 0 var(--ink); overflow: hidden; }
+.btn::before { content: ""; position: absolute; left: 14px; top: 8px; width: 34px; height: 12px; background: #fff; opacity: 0.85; border-radius: 50%; transform: rotate(-18deg); pointer-events: none; }
+.btn::after { content: ""; position: absolute; top: -20%; left: -40%; width: 30%; height: 140%; background: #fff; opacity: 0; transform: skewX(-20deg); pointer-events: none; }
+.btn:hover::after { animation: sweep 700ms var(--ease); }
+@keyframes sweep { 0% { opacity: 0.6; left: -40%; } 100% { opacity: 0; left: 120%; } }
+.btn.ink { background: var(--ink); color: var(--cream); box-shadow: 5px 6px 0 var(--pink); }
+.btn.yellow { background: var(--yellow); }
+.btn.small { min-height: 48px; padding: 8px 18px; font-size: 20px; box-shadow: 3px 4px 0 var(--ink); }
+.btn.small::before { width: 22px; height: 8px; left: 10px; top: 6px; }
 .link { font-weight: 900; font-size: 22px; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 3px; background: none; border: 0; padding: 0; }
-.rise { opacity: 0; transform: translateY(24px); transition: opacity 600ms var(--ease), transform 600ms var(--ease); }
-.rise.in { opacity: 1; transform: none; }
 
 /* test banner */
-#test { background: var(--ink); color: var(--paper); font-size: 17px; font-weight: 900; padding: 8px var(--m); text-align: center; line-height: 1.3; }
+#test { background: var(--yellow); color: var(--ink); font-size: 17px; font-weight: 900; padding: 8px var(--m); text-align: center; line-height: 1.3; border-bottom: var(--line) solid var(--ink); }
 
-/* top row: wordmark, three links, one action. Sits on the hero wall. */
-#top { position: absolute; left: 0; right: 0; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px var(--m); font-weight: 900; font-size: 22px; }
-#top .word { text-decoration: none; text-transform: uppercase; letter-spacing: 0.02em; font-size: 28px; }
-#top nav { display: none; gap: 28px; }
+/* top bar */
+#top { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px var(--m); background: var(--cream); border-bottom: var(--line) solid var(--ink); font-weight: 900; font-size: 22px; }
+#top .word { text-decoration: none; text-transform: uppercase; letter-spacing: 0.02em; font-size: 26px; }
+#top nav { display: none; gap: 26px; }
 #top nav a { text-decoration: none; }
-#top .btn { min-height: 48px; padding: 10px 18px; font-size: 20px; background: var(--ink); color: var(--paper); }
 
-/* hero: the pink wall. The frame grows to fill the screen as you scroll (desktop only). */
-#hero .scene-stage { min-height: 100svh; display: grid; grid-template-rows: 1fr auto; padding: 96px var(--m) 32px; overflow: clip; }
-#hero h1 { font-size: clamp(32px, 8.6vw, 178px); letter-spacing: -0.04em; max-width: 14ch; position: relative; z-index: 2; margin-top: 10px; }
-#hero .under { display: grid; gap: 22px; margin-top: 28px; position: relative; z-index: 2; }
-#hero .lede { font-size: 22px; }
-#hero .frame { position: relative; z-index: 1; width: min(100%, 420px); aspect-ratio: 4 / 5; margin: 26px 0 0 auto; transform: rotate(-4deg); transform-origin: 50% 50%; background: var(--ink); overflow: hidden; }
-#hero .frame video, #hero .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-#sound { position: absolute; right: 12px; bottom: 12px; z-index: 3; min-height: 44px; padding: 8px 14px; font-size: 18px; background: var(--paper); }
+/* the drips hanging off every coloured band */
+.drip { position: absolute; left: 0; right: 0; top: calc(100% + var(--line)); height: 64px; width: 100%; z-index: 5; pointer-events: none; overflow: visible; }
+.drip path { fill: var(--c); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.drip .cap { stroke: none; }
+
+/* hosts: the wall characters, and the splashes behind them */
+.host { position: relative; z-index: 2; width: 100%; height: auto; }
+.splash { position: absolute; z-index: 1; pointer-events: none; }
+.splash use { stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; }
+.mark { position: absolute; pointer-events: none; fill: currentColor; }
+.star { animation: twinkle 2.6s ease-in-out infinite; }
+.star:nth-child(2n) { animation-delay: 0.9s; }
+.star:nth-child(3n) { animation-delay: 1.7s; }
+@keyframes twinkle { 0%, 100% { transform: scale(0.7); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+
+/* hero: the gorilla is the face of the house */
+#hero { padding: 24px 0 56px; overflow: clip; }
+#hero .wrap { display: grid; gap: 18px; }
+#hero .art { position: relative; margin: 0 -6%; order: -1; }
+#hero .art .host { width: 100%; }
+#hero h1 { position: relative; z-index: 3; margin-top: 8px; }
+#hero h1 b { font-weight: inherit; color: var(--pink); -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; }
+#hero .under { display: grid; gap: 22px; }
+#hero .row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; }
+#hero .frame { position: relative; width: min(100%, 360px); aspect-ratio: 4 / 5; overflow: hidden; --r: -3deg; --c: var(--ink); padding: 0; }
+#hero .frame::before { z-index: 3; }
+#hero .frame video, #hero .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 22px; }
+#sound { position: absolute; right: 12px; bottom: 12px; z-index: 3; background: var(--cream); }
 #sound .on, #sound[aria-pressed="true"] .off { display: none; }
 #sound[aria-pressed="true"] .on { display: inline; }
-#hero .trust { font-size: 18px; max-width: 46ch; }
+.trust { font-size: 18px; max-width: 46ch; }
 
-/* the marquee: the dealt motion of this direction */
-.marquee { background: var(--ink); color: var(--paper); overflow: hidden; }
-.marquee .track { display: flex; width: max-content; white-space: nowrap; font-weight: 900; font-size: 30px; letter-spacing: 0.03em; text-transform: uppercase; padding: 14px 0; animation: slide 28s linear infinite; }
-.marquee span { display: inline-flex; align-items: center; gap: 22px; padding: 0 22px; }
-.marquee svg { width: 30px; height: 30px; }
+/* the ticker */
+.marquee { background: var(--ink); color: var(--cream); overflow: hidden; border-top: var(--line) solid var(--ink); border-bottom: var(--line) solid var(--ink); }
+.marquee .track { display: flex; width: max-content; white-space: nowrap; font-weight: 900; font-size: 28px; letter-spacing: 0.03em; text-transform: uppercase; padding: 12px 0; animation: slide 30s linear infinite; }
+.marquee span { display: inline-flex; align-items: center; gap: 20px; padding: 0 20px; }
+.marquee svg { width: 22px; height: 22px; fill: var(--yellow); }
 @keyframes slide { to { transform: translateX(-50%); } }
 
-/* the worries: a row of short statements, each on its own panel of unequal width */
-#why .panels { display: grid; gap: 0; margin-top: 44px; }
-.panel { padding: 28px var(--m) 30px; display: grid; gap: 8px; align-content: start; }
-.panel .q { font-weight: 900; font-size: 30px; line-height: 1; }
-.panel .a { font-family: var(--font-display); font-size: 22px; line-height: 1.05; text-transform: uppercase; letter-spacing: -0.01em; margin-top: 6px; }
-.panel p { font-size: 20px; }
+/* two column host layouts */
+.duo { display: grid; gap: 28px; align-items: center; }
+.duo .art { position: relative; }
+.duo .copy { position: relative; z-index: 3; }
 
-/* the words wall: the peak. Posters paste on as you scroll, then the wall is covered. */
-#wall .scene-stage { background: var(--blue); color: var(--paper); min-height: 100svh; padding: clamp(56px, 8vw, 96px) var(--m); overflow: clip; }
+/* night: the promise, under the wolf's moon */
+#night { --c: var(--ink); }
+#night .promises { display: grid; gap: 18px; margin-top: 30px; }
+#night .promise { padding: 20px 24px 22px; font-weight: 900; font-size: 26px; line-height: 1.05; }
+#night .promise small { display: block; font-weight: 400; font-size: 19px; margin-top: 6px; opacity: 0.85; }
+#night .mark.star { color: var(--yellow); width: 22px; }
+
+/* the worries: eight stickers, the split face watching */
+#why .panels { display: grid; gap: 22px; margin-top: 36px; }
+.panel { padding: 26px 24px 26px; display: grid; gap: 8px; align-content: start; }
+.panel .q { font-weight: 900; font-size: 27px; line-height: 1; }
+.panel .a { font-family: var(--font-display); font-size: 20px; line-height: 1.05; text-transform: uppercase; letter-spacing: -0.01em; margin-top: 6px; }
+.panel p { font-size: 19px; }
+
+/* the review wall: the peak. Quotes slap on one by one as you scroll. */
+#wall { --c: var(--blue); padding: 0; }
+#wall .pig { display: block; }
+#wall .scene-stage { background: var(--blue); color: var(--ink); min-height: 100svh; padding: clamp(56px, 7vw, 96px) var(--m); overflow: clip; }
 #wall h2 { position: relative; z-index: 2; max-width: 12ch; }
-#wall .posters { position: relative; margin-top: 36px; display: grid; gap: 14px; }
-.poster { background: var(--paper); color: var(--ink); padding: 22px 22px 18px; margin: 0; transform: rotate(var(--r, 0deg)); }
-.poster p { font-weight: 900; font-size: 26px; line-height: 1.02; letter-spacing: 0.01em; }
-.poster footer { margin-top: 12px; font-size: 17px; }
-html.js #wall.is-live .posters { position: absolute; inset: 0; margin: 0; display: block; }
+#wall .pig { position: relative; z-index: 2; width: min(78%, 360px); margin: 24px auto 0; }
+#wall .posters { position: relative; z-index: 3; display: grid; gap: 22px; margin-top: 28px; }
+.poster { margin: 0; padding: 22px 24px 20px; }
+.poster p { font-weight: 900; font-size: 26px; line-height: 1.05; }
+.poster footer { font-size: 17px; margin-top: 10px; opacity: 0.85; }
+html.js #wall.is-live .scene-stage { padding-bottom: 0; }
+html.js #wall.is-live .pig { position: absolute; left: var(--m); bottom: 0; width: min(30vw, 400px); margin: 0; z-index: 2; }
+html.js #wall.is-live .posters { position: absolute; inset: 0; display: block; margin: 0; }
 html.js #wall.is-live .poster { position: absolute; width: min(34vw, 420px); }
 
-/* the videos */
-#stories .rail { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 36px var(--m) 20px; margin: 0 calc(-1 * var(--m)); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+/* stories: tall videos on a rail */
+#stories .rail { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 16px 4px 24px; margin: 20px calc(-1 * var(--m)) 0; padding-left: var(--m); scrollbar-width: none; }
 #stories .rail::-webkit-scrollbar { display: none; }
-.story { position: relative; flex: 0 0 min(72vw, 300px); aspect-ratio: 9 / 15; background: var(--ink); scroll-snap-align: center; border: 0; padding: 0; text-align: left; color: var(--paper); overflow: hidden; transform: rotate(var(--r, 0deg)); }
-.story video, .story img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.story .text { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px; background: rgba(20, 20, 20, 0.82); display: grid; gap: 4px; }
-.story .quote { font-weight: 900; font-size: 24px; line-height: 1; }
-.story .who { font-size: 16px; }
-.story .snd { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; background: var(--paper); color: var(--ink); display: grid; place-items: center; }
-.story .snd svg { width: 20px; height: 20px; }
+.story { flex: 0 0 min(72vw, 300px); aspect-ratio: 9 / 16; scroll-snap-align: start; overflow: hidden; padding: 0; text-align: left; --c: var(--ink); }
+.story::before { z-index: 3; }
+.story img, .story video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 22px; }
+.story .text { position: absolute; left: 14px; right: 14px; bottom: 14px; z-index: 2; display: grid; gap: 8px; }
+.story .quote { background: var(--yellow); border: var(--line) solid var(--ink); border-radius: 16px; padding: 10px 12px; font-weight: 900; font-size: 20px; line-height: 1.05; box-shadow: 3px 4px 0 var(--ink); }
+.story .who { color: var(--cream); font-size: 16px; text-shadow: 0 1px 2px #000; }
+.story .snd { position: absolute; top: 12px; right: 12px; z-index: 2; width: 44px; height: 44px; border-radius: 50%; background: var(--cream); border: var(--line) solid var(--ink); display: grid; place-items: center; }
+.story .snd svg { width: 22px; height: 22px; }
 .story .snd .on, .story[data-sound="on"] .snd .off { display: none; }
 .story[data-sound="on"] .snd .on { display: block; }
 
-/* right now in goa: the live thing */
-#now h2 { font-size: clamp(34px, 6.6vw, 96px); }
-#now .clock { font-variant-numeric: tabular-nums; }
-#now ol { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 0; max-width: 820px; }
-#now li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 14px 0; font-size: 26px; line-height: 1.1; font-weight: 900; }
-#now li span:first-child { font-family: var(--font-display); font-size: 20px; }
-#now li.live { background: var(--pink); margin: 0 calc(-1 * var(--m)); padding-inline: var(--m); }
-#now .fine { margin-top: 28px; font-size: 18px; max-width: 46ch; }
+/* tonight: the croc at the bar, the live clock */
+#now .clock { color: var(--pink); -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; white-space: nowrap; }
+#plan { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
+#plan li { display: grid; grid-template-columns: 86px 1fr; gap: 14px; align-items: start; padding: 14px 18px; transition: background 300ms var(--ease); }
+#plan li span:first-child { font-weight: 900; font-size: 24px; line-height: 1; }
+#plan li.live { --c: var(--pink); }
+#plan li.live span:first-child::after { content: " now"; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-top: 4px; }
+.smoke { position: absolute; width: 7%; aspect-ratio: 1; border-radius: 50%; background: var(--cream); border: var(--line) solid var(--ink); z-index: 3; opacity: 0; }
 
-/* a day here: photographs that bleed off two edges, caption on a colour bar */
-#day { padding: 0; }
-#day figure { margin: 0; position: relative; }
-#day figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-#day figcaption { display: grid; gap: 6px; padding: 22px var(--m) 28px; background: var(--yellow); color: var(--ink); }
-#day figcaption b { font-family: var(--font-display); font-size: 24px; text-transform: uppercase; }
-#day figcaption span { font-size: 20px; }
+/* the day loop: the tiger's rule */
+#day { --c: var(--yellow); }
+#day .three { display: grid; gap: 26px; margin-top: 30px; }
+figure.polaroid { margin: 0; padding: 12px 12px 16px; --c: #fff; }
+figure.polaroid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: var(--line) solid var(--ink); border-radius: 16px; }
+figure.polaroid figcaption { margin-top: 12px; font-weight: 900; font-size: 24px; line-height: 1; }
+figure.polaroid figcaption span { display: block; font-weight: 400; font-size: 18px; margin-top: 6px; }
 
-/* were you here */
-#eras .three { display: grid; gap: 16px; margin-top: 40px; }
-#eras figure { margin: 0; display: grid; gap: 10px; transform: rotate(var(--r, 0deg)); }
-#eras img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-#eras figcaption { font-weight: 900; font-size: 26px; line-height: 1; }
-#eras figcaption span { display: block; font-weight: 400; font-size: 18px; margin-top: 4px; }
-#eras .row { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; margin-top: 36px; }
-#eras .fine { margin-top: 24px; font-size: 20px; }
+/* eras: were you here */
+#eras { --c: var(--purple); }
+#eras .three { display: grid; gap: 26px; margin-top: 30px; }
+#eras .row { display: flex; flex-wrap: wrap; gap: 16px 22px; align-items: center; margin-top: 30px; }
 
-/* the basics: a large plain list */
-#basics dl { margin: 40px 0 0; display: grid; gap: 22px; max-width: 900px; }
-#basics dt { font-family: var(--font-display); font-size: 22px; text-transform: uppercase; }
-#basics dd { margin: 6px 0 0; font-size: 24px; line-height: 1.2; }
-#basics dd a { font-weight: 900; text-underline-offset: 4px; text-decoration-thickness: 3px; }
+/* basics: the cat says hey */
+#basics dl { margin: 28px 0 0; padding: 22px 24px; display: grid; gap: 18px; }
+#basics dt { font-weight: 900; font-size: 24px; line-height: 1; }
+#basics dd { margin: 4px 0 0; font-size: 19px; }
 
-/* book: the last cut */
-#book { min-height: 90svh; display: grid; align-content: center; }
-#book h2 { font-size: clamp(44px, 10.5vw, 150px); max-width: 10ch; }
-#book .lede { font-size: 24px; }
-#book .btn { margin-top: 32px; font-size: 28px; padding: 22px 36px; }
-#book .fine { margin-top: 20px; font-size: 18px; }
+/* book */
+#book { --c: var(--pink); text-align: center; }
+#book .lede { margin-inline: auto; }
+#book .btn { margin-top: 28px; }
 
-/* footer: the name returns at full width */
-footer { background: var(--ink); color: var(--paper); padding: 40px var(--m) calc(32px + env(safe-area-inset-bottom, 0px)); }
-footer .name { font-family: var(--font-display); font-size: clamp(44px, 15.6vw, 230px); line-height: 0.85; letter-spacing: -0.03em; text-transform: uppercase; margin: 0 0 24px; }
-footer .links { display: flex; flex-wrap: wrap; gap: 10px 26px; font-weight: 900; font-size: 20px; }
-footer .links a, footer .links button { background: none; border: 0; padding: 0; color: var(--paper); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
-footer .small { margin-top: 20px; font-size: 17px; }
+body > footer { background: var(--ink); color: var(--cream); padding: clamp(56px, 7vw, 100px) var(--m) 120px; border-top: var(--line) solid var(--ink); }
+body > footer .name { display: block; max-width: 900px; margin: 0 auto; }
+body > footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px; margin-top: 36px; }
+body > footer .small { font-size: 16px; line-height: 1.5; opacity: 0.85; text-align: center; max-width: 60ch; margin: 36px auto 0; }
 
-/* sticky book bar on phones, once the hero scrolls away */
-#stick { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 10px var(--m) calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: space-between; gap: 12px; transform: translateY(110%); transition: transform 300ms var(--ease); }
-#stick small { font-size: 17px; line-height: 1.2; }
-#stick .btn { min-height: 48px; padding: 10px 20px; font-size: 20px; }
-body.away #stick { transform: translateY(0); }
+/* phone bar */
+#stick { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px var(--m) max(10px, env(safe-area-inset-bottom)); background: var(--cream); border-top: var(--line) solid var(--ink); transform: translateY(110%); transition: transform 320ms var(--ease); }
+#stick small { font-weight: 900; font-size: 17px; line-height: 1.1; }
+body.away #stick { transform: none; }
+#toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 20px); z-index: 60; max-width: min(92vw, 520px); background: var(--ink); color: var(--cream); padding: 14px 18px; border-radius: 18px; border: var(--line) solid var(--cream); font-weight: 900; font-size: 18px; line-height: 1.25; opacity: 0; pointer-events: none; transition: opacity 240ms, transform 240ms var(--ease); }
+#toast.on { opacity: 1; transform: translate(-50%, 0); }
 
-#toast { position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 50; background: var(--yellow); color: var(--ink); font-size: 18px; font-weight: 900; padding: 12px 16px; max-width: calc(100vw - 32px); opacity: 0; transition: opacity 200ms; pointer-events: none; text-align: center; }
-#toast.on { opacity: 1; }
+/* motion gates: things that pop in start hidden only when script runs */
+html.js .pop { visibility: hidden; }
+html.js .pop.in, html.no-gsap .pop { visibility: visible; }
 
-@media (max-width: 819px) {
-  body.away #top { display: none; }
-  .story:nth-child(2) { --r: 2deg; }
-  .story:nth-child(5) { --r: -2deg; }
-}
-@media (min-width: 600px) {
-  #why .panels { grid-template-columns: repeat(12, 1fr); }
-  .panel:nth-child(1) { grid-column: span 7; } .panel:nth-child(2) { grid-column: span 5; }
-  .panel:nth-child(3) { grid-column: span 4; } .panel:nth-child(4) { grid-column: span 8; }
-  .panel:nth-child(5) { grid-column: span 6; } .panel:nth-child(6) { grid-column: span 6; }
-  .panel:nth-child(7) { grid-column: span 5; } .panel:nth-child(8) { grid-column: span 7; }
-  #wall .posters { grid-template-columns: repeat(2, 1fr); }
-  #eras .three { grid-template-columns: repeat(3, 1fr); }
-  #day .pair { display: grid; grid-template-columns: 1fr 1fr; }
-}
 @media (min-width: 820px) {
   #top nav { display: flex; }
-  #hero .scene-stage { padding-top: 120px; padding-bottom: 48px; }
-  #hero h1 { font-size: clamp(40px, 8.8vw, 150px); max-width: 14ch; }
-  #hero .under { max-width: 52%; }
-  #hero .frame { position: absolute; right: var(--m); top: 62%; width: min(28vw, 400px); margin: 0; transform: translateY(-50%) rotate(-5deg); z-index: 3; }
-  #wall h2 { font-size: 6.4vw; max-width: 9ch; }
-  #wall .posters { grid-template-columns: repeat(3, 1fr); }
-  #stories .rail { padding-top: 48px; }
-  .story { flex-basis: 280px; }
-  .story:nth-child(3) { --r: 3deg; }
-  .story:nth-child(6) { --r: -3deg; }
-  #eras figure:nth-child(2) { --r: 2.5deg; }
-  #day figure.wide img { aspect-ratio: 21 / 9; }
+  #hero { padding: 40px 0 80px; }
+  #hero .wrap { grid-template-columns: 1fr 1.15fr; align-items: center; gap: 0 20px; }
+  #hero .art { margin: 0 -12% 0 -4%; order: 0; }
+  #hero .copy { padding-right: 20px; }
+  .duo { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .duo.flip .art { order: -1; }
+  #night .promises { grid-template-columns: 1fr; }
+  #why .panels { grid-template-columns: repeat(2, 1fr); }
+  #day .three, #eras .three { grid-template-columns: repeat(3, 1fr); }
+  #basics dl { grid-template-columns: 1fr 1fr; gap: 22px 32px; }
   #stick { display: none; }
+  #toast { bottom: 32px; }
+}
+@media (min-width: 1100px) {
+  #why .panels { grid-template-columns: repeat(4, 1fr); }
+  #hero .frame { width: 300px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .rise { opacity: 1; transform: none; transition: none; }
-  .marquee .track { animation: none; }
-  #stick, .btn { transition: none; }
+  .marquee .track, .star, .btn::after { animation: none !important; }
+  html.js .pop { visibility: visible; }
 }
 </style>
 </head>
 <body>
-
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-  <symbol id="s-sun" viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="currentColor"/><g stroke="currentColor" stroke-width="7" stroke-linecap="round"><path d="M60 4v14M60 102v14M4 60h14M102 60h14M20 20l10 10M90 90l10 10M20 100l10-10M90 30l10-10"/></g></symbol>
-  <symbol id="s-moon" viewBox="0 0 120 120"><path d="M72 10A48 48 0 1 0 110 72A38 38 0 0 1 72 10Z" fill="currentColor"/></symbol>
-  <symbol id="s-mango" viewBox="0 0 120 120"><path d="M60 22C28 22 20 56 34 82C44 100 60 104 70 104C96 104 108 72 98 48C92 32 76 22 60 22Z" fill="currentColor"/><path d="M66 22C70 12 80 8 92 10C84 20 74 24 66 22Z" fill="currentColor"/></symbol>
-  <symbol id="s-disco" viewBox="0 0 120 120"><circle cx="60" cy="66" r="42" fill="currentColor"/><path d="M60 2v24" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></symbol>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="s-star" viewBox="0 0 24 24"><path d="M12 0l3.2 8.8L24 12l-8.8 3.2L12 24l-3.2-8.8L0 12l8.8-3.2z"/></symbol>
+  <symbol id="s-blob" viewBox="0 0 400 320"><path d="M78 190c-40-54 14-128 90-108 24-56 128-58 158-6 66-14 100 60 56 106 36 60-38 122-104 92-46 46-134 36-152-20-66 2-104-36-48-64z"/></symbol>
+  <symbol id="s-pill" viewBox="0 0 60 28"><rect x="2" y="2" width="56" height="24" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><path d="M30 2v24" stroke="#111" stroke-width="3"/><path d="M14 2h16v24H14a12 12 0 0 1 0-24z" fill="#ff4f9a"/></symbol>
 </svg>
 
-<div id="test">Test version. Every video, photo, quote and name on this page is a sample until the real ones arrive.</div>
+<div id="test">Test version. Every video, photo, quote and name on this page is a sample until the real ones arrive. The wall art is real.</div>
+
+<header id="top">
+  <a class="word" href="#hero">Pappi Chulo</a>
+  <nav aria-label="Page">
+    <a href="#wall">Guests</a>
+    <a href="#now">Tonight</a>
+    <a href="#basics">The basics</a>
+  </nav>
+  <button type="button" class="btn small" data-book>Book a bed</button>
+</header>
 
 <main>
-<section id="hero" class="scene pink" data-scene="hero-grow" data-options='{"hold":1.6}' aria-label="Welcome">
-  <div class="scene-stage">
-    <div id="top">
-      <a class="word" href="#hero">Pappi Chulo</a>
-      <nav aria-label="Page">
-        <a href="#wall">Guests</a>
-        <a href="#now">Tonight</a>
-        <a href="#basics">The basics</a>
-      </nav>
-      <button type="button" class="btn" data-book>Book a bed</button>
-    </div>
+<section id="hero" aria-label="Welcome">
+  <div class="wrap">
     <div class="copy">
-      <h1>Nobody leaves<br>alone.</h1>
+      <h1>Come for<br>a night.<br><b>Stay for<br>the story.</b></h1>
       <div class="under">
-        <p class="lede">Pappi Chulo is the party hostel on Ozran Beach Road, Vagator. Eleven years, next door to 9 Bar, under a mango tree.</p>
-        <div><button type="button" class="btn" data-book>Book a bed</button></div>
+        <p class="lede">Pappi Chulo is the house where Goa never lets you leave. Party hostel on Ozran Beach Road, Vagator. Eleven years, next door to 9 Bar.</p>
+        <div class="row">
+          <button type="button" class="btn" data-book>Book a bed</button>
+          <a class="link" href="#wall">What guests say</a>
+        </div>
         <p class="trust">Sample line. The guest rating, the price from, and the cancellation rule go here.</p>
       </div>
     </div>
-    <div class="frame" data-move>
-      <video id="hero-video" muted playsinline loop preload="metadata" poster="media/hero-phone.jpg" aria-label="Sample video. A real clip of a Pappi night goes here."></video>
-      <button type="button" id="sound" class="btn" aria-pressed="false" aria-label="Turn the sound on">
-        <span class="off">Sound</span><span class="on">Sound is on</span>
-      </button>
+    <div class="art">
+      <svg class="splash" style="left:6%;top:-6%;width:70%;color:var(--pink)" viewBox="0 0 400 320" aria-hidden="true"><use href="#s-blob" fill="currentColor"/></svg>
+      <picture>
+        <source media="(max-width: 819px)" srcset="media/art/gorilla-phone.webp">
+        <img id="gorilla" class="host pop" src="media/art/gorilla.webp" alt="The Pappi Chulo wall: a gorilla astronaut between puffy letters, a flamingo and a pirate." width="1600" height="667" fetchpriority="high">
+      </picture>
+    </div>
+    <div class="row">
+      <div class="frame stk">
+        <video id="hero-video" muted playsinline loop preload="metadata" poster="media/hero-phone.jpg" aria-label="Sample video. A real clip of a Pappi night goes here."></video>
+        <button type="button" id="sound" class="btn small" aria-pressed="false" aria-label="Turn the sound on">
+          <span class="off">Sound</span><span class="on">Sound is on</span>
+        </button>
+      </div>
+      <p class="fine" style="max-width:26ch">Sample clip. The real one is thirty seconds of a Pappi night, phone footage, a bit blurry is fine.</p>
     </div>
   </div>
 </section>
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>Come alone<svg><use href="#s-sun"/></svg></span><span>Leave with a crew<svg><use href="#s-disco"/></svg></span><span>Ozran Beach Road<svg><use href="#s-mango"/></svg></span><span>Next to 9 Bar<svg><use href="#s-moon"/></svg></span><span>Eleven years<svg><use href="#s-sun"/></svg></span><span>Book direct, pay less<svg><use href="#s-disco"/></svg></span>
-    <span>Come alone<svg><use href="#s-sun"/></svg></span><span>Leave with a crew<svg><use href="#s-disco"/></svg></span><span>Ozran Beach Road<svg><use href="#s-mango"/></svg></span><span>Next to 9 Bar<svg><use href="#s-moon"/></svg></span><span>Eleven years<svg><use href="#s-sun"/></svg></span><span>Book direct, pay less<svg><use href="#s-disco"/></svg></span>
+    <span>Come alone<svg><use href="#s-star"/></svg></span><span>Leave with a crew<svg><use href="#s-star"/></svg></span><span>Ozran Beach Road<svg><use href="#s-star"/></svg></span><span>Next to 9 Bar<svg><use href="#s-star"/></svg></span><span>Eleven years<svg><use href="#s-star"/></svg></span><span>Zero early nights<svg><use href="#s-star"/></svg></span><span>Book direct, pay less<svg><use href="#s-star"/></svg></span>
+    <span>Come alone<svg><use href="#s-star"/></svg></span><span>Leave with a crew<svg><use href="#s-star"/></svg></span><span>Ozran Beach Road<svg><use href="#s-star"/></svg></span><span>Next to 9 Bar<svg><use href="#s-star"/></svg></span><span>Eleven years<svg><use href="#s-star"/></svg></span><span>Zero early nights<svg><use href="#s-star"/></svg></span><span>Book direct, pay less<svg><use href="#s-star"/></svg></span>
   </div>
 </div>
 
-<section id="why" class="wall paper">
-  <h2 class="rise">You know the worry.</h2>
-  <p class="lede rise">Everyone arrives with one of these in their head. Here is what happens instead.</p>
-  <div class="panels">
-    <article class="panel yellow rise"><p class="q">"I'm travelling alone."</p><p class="a">Not for long.</p><p>By your first night you have a crew. The bar table does the work, not you.</p></article>
-    <article class="panel pink rise"><p class="q">"I'm a woman travelling alone."</p><p class="a">You never walk out alone.</p><p>A girls' dorm, staff who look out for you, and a crew that goes out together.</p></article>
-    <article class="panel blue rise"><p class="q">"Where's the party?"</p><p class="a">You're in it.</p><p>Pappi is the party. When it winds down, everyone walks up to Hilltop.</p></article>
-    <article class="panel paper rise"><p class="q">"I don't want to plan every day."</p><p class="a">Plans make themselves.</p><p>Beach at one, sunset at the bar at five. Nobody plans it. It just happens.</p></article>
-    <article class="panel on-ink rise"><p class="q">"I want to party, but I also want to sleep."</p><p class="a">Quiet dorm.</p><p>The party is in the courtyard, not in your bed.</p></article>
-    <article class="panel yellow rise"><p class="q">"First time in India. It's a lot."</p><p class="a">The soft landing.</p><p>Staff who tell you where to eat, what the scooter should cost, and which beach today.</p></article>
-    <article class="panel pink rise"><p class="q">"I'm not 22 anymore."</p><p class="a">Nobody checks.</p><p>Eleven years of guests means every age turns up. A lot of them keep coming back.</p></article>
-    <article class="panel blue rise"><p class="q">"I want a place that feels like home."</p><p class="a">Same dogs at the gate.</p><p>Three eras, staff who know your name by day two, and dogs who remember you a year later.</p></article>
-  </div>
-</section>
-
-<section id="wall" class="scene blue" data-scene="wall" data-options='{"hold":3}' aria-label="What guests say">
-  <div class="scene-stage on-blue">
-    <h2>What they say when they leave.</h2>
-    <div class="posters">
-      <blockquote class="poster" style="--r:-3deg" data-move><p>I booked two nights. I stayed eleven. That's Pappi.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
-      <blockquote class="poster" style="--r:2deg" data-move><p>Walked in alone at 4 pm. By midnight I had a table of twelve.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
-      <blockquote class="poster" style="--r:-1.5deg" data-move><p>Pappi in three words: loud, warm, home.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
-      <blockquote class="poster" style="--r:3deg" data-move><p>Every hostel says "family". This one means it.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
-      <blockquote class="poster" style="--r:-2.5deg" data-move><p>I came for the party. I came back for the people.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
-      <blockquote class="poster" style="--r:1.5deg" data-move><p>Left with nine new friends from six countries. We still have the group chat.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
-      <blockquote class="poster" style="--r:-2deg" data-move><p>The dogs remembered me a year later. So did the staff.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
-      <blockquote class="poster" style="--r:2.5deg" data-move><p>I've been to forty hostels. I only ever went back to one.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
+<section id="night" class="band on-ink" aria-label="The promise">
+  <div class="wrap duo flip">
+    <div class="art">
+      <svg class="mark star" style="left:4%;top:0;width:22px" aria-hidden="true"><use href="#s-star"/></svg>
+      <svg class="mark star" style="right:8%;top:10%;width:16px" aria-hidden="true"><use href="#s-star"/></svg>
+      <svg class="mark star" style="left:40%;bottom:-4%;width:18px" aria-hidden="true"><use href="#s-star"/></svg>
+      <picture>
+        <source media="(max-width: 819px)" srcset="media/art/wolf-phone.webp">
+        <img class="host pop" src="media/art/wolf.webp" alt="The night wall: a wolf and a horse with blue mohawks under a moon and stars." width="1600" height="760" loading="lazy">
+      </picture>
+    </div>
+    <div class="copy">
+      <h2>Nobody leaves alone.</h2>
+      <p class="lede">Three things we promise every guest, in plain words.</p>
+      <div class="promises">
+        <p class="promise stk cream pop" style="--r:-1.5deg">You will not be alone here. <small>Even if you came alone. By the first night you have a crew.</small></p>
+        <p class="promise stk pink pop" style="--r:1deg">The party comes to you. <small>You do not have to go looking. Pappi is where it starts.</small></p>
+        <p class="promise stk yellow pop" style="--r:-0.8deg">You leave with friends and a story. <small>One you cannot tell your mom.</small></p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="stories" class="wall yellow">
-  <h2 class="rise">Don't take our word for it.</h2>
-  <p class="lede rise">Short videos of real guests. Tap one for sound, swipe for more.</p>
-  <div class="rail" id="rail" role="list" aria-label="Guest videos"></div>
-</section>
-
-<section id="now" class="wall paper">
-  <h2 class="rise">Right now in Goa it's <span class="clock" id="clock">late</span>.</h2>
-  <p class="lede rise">Every night starts at the bar. Where it ends is up to the night.</p>
-  <ol id="plan" class="rise">
-    <li data-from="7" data-to="12"><span>10 am</span><span>Chai under the mango tree. The dogs are up. Nobody else is.</span></li>
-    <li data-from="12" data-to="17"><span>1 pm</span><span>Beach. Ozran is down the road and last night's table is already there.</span></li>
-    <li data-from="17" data-to="21"><span>5 pm</span><span>Sunset at the bar. Tonight's plan happens here, without anyone planning it.</span></li>
-    <li data-from="21" data-to="1"><span>9 pm</span><span>Live DJ at the bar. Techno, most nights. Game nights, beer pong, cards.</span></li>
-    <li data-from="1" data-to="5"><span>1 am</span><span>Hilltop, the open-air club up the hill, five minutes away. Everyone walks up together.</span></li>
-    <li data-from="5" data-to="7"><span>6 am</span><span>Sunrise with yesterday's strangers. Now they're your people.</span></li>
-  </ol>
-  <p class="fine rise">Sample plan. The week's real nights go here once the team sends them.</p>
-</section>
-
-<section id="day" class="paper" aria-label="A day at Pappi">
-  <figure class="wide rise"><img src="media/day-1.jpg" alt="Sample photo. A real morning photo goes here." loading="lazy" width="1200" height="800"><figcaption><b>Slow start</b><span>Chai and coffee under the mango tree. The dogs are up. Nobody else is.</span></figcaption></figure>
-  <div class="pair">
-    <figure class="rise"><img src="media/day-3.jpg" alt="Sample photo. A real sunset photo goes here." loading="lazy" width="1200" height="800"><figcaption><b>Sunset at the bar</b><span>9 Bar next door, the cliff, the whole hostel on the wall watching.</span></figcaption></figure>
-    <figure class="rise"><img src="media/day-5.jpg" alt="Sample photo. A real late night photo goes here." loading="lazy" width="1200" height="800"><figcaption><b>Everyone, together</b><span>Some nights the floor goes till late. Some nights everyone walks up to Hilltop.</span></figcaption></figure>
+<section id="why" class="band cream">
+  <div class="wrap">
+    <div class="duo">
+      <div class="copy">
+        <h2>You know the worry.</h2>
+        <p class="lede">Everyone arrives with one of these in their head. Here is what happens instead.</p>
+      </div>
+      <div class="art">
+        <svg class="splash" style="right:-4%;top:4%;width:80%;color:var(--yellow)" viewBox="0 0 400 320" aria-hidden="true"><use href="#s-blob" fill="currentColor"/></svg>
+        <picture>
+          <source media="(max-width: 819px)" srcset="media/art/face-phone.webp">
+          <img class="host pop" src="media/art/face.webp" alt="A split face from the wall: one half blue with pink glasses, the other half a skull." width="1600" height="1079" loading="lazy">
+        </picture>
+      </div>
+    </div>
+    <div class="panels">
+      <article class="panel stk yellow pop" style="--r:-1deg"><p class="q">"I'm travelling alone."</p><p class="a">Not for long.</p><p>By your first night you have a crew. The bar table does the work, not you.</p></article>
+      <article class="panel stk pink pop" style="--r:0.8deg"><p class="q">"I'm a woman travelling alone."</p><p class="a">Party hard. Sleep safe.</p><p>A women-only dorm, staff who look out for you, a bar where nobody hassles you.</p></article>
+      <article class="panel stk blue pop" style="--r:-0.6deg"><p class="q">"Where's the party?"</p><p class="a">You're in it.</p><p>Pappi is the party. When it winds down, everyone walks up to Hilltop.</p></article>
+      <article class="panel stk green pop" style="--r:1.2deg"><p class="q">"I don't want to plan every day."</p><p class="a">Plans make themselves.</p><p>Beach at one, sunset at the bar at five. Nobody plans it. It just happens.</p></article>
+      <article class="panel stk purple pop" style="--r:-1.1deg"><p class="q">"I want to party, but I also want to sleep."</p><p class="a">Dorms are for sleeping.</p><p>The bar is for everything else. The party is in the courtyard, not in your bed.</p></article>
+      <article class="panel stk orange pop" style="--r:0.7deg"><p class="q">"First time in India. It's a lot."</p><p class="a">The soft landing.</p><p>Staff who tell you where to eat, what the scooter should cost, and which beach today.</p></article>
+      <article class="panel stk cream pop" style="--r:-0.9deg"><p class="q">"I'm not 22 anymore."</p><p class="a">You came back. Of course you did.</p><p>Eleven years of guests means every age turns up. A lot of them keep coming back.</p></article>
+      <article class="panel stk pink pop" style="--r:1deg"><p class="q">"Three nights with the whole office."</p><p class="a">Book the whole dorm.</p><p>Fourteen beds, one group chat. Bring the whole gang from Mumbai, Pune or Bangalore.</p></article>
+    </div>
   </div>
 </section>
 
-<section id="eras" class="wall on-ink">
-  <h2 class="rise">Were you here?</h2>
-  <p class="lede rise">Eleven years. Three eras, named by the guests. Thousands of you. Send us your old photos and find yourself on this page.</p>
-  <div class="three">
-    <figure class="rise"><img src="media/era-1.jpg" alt="Sample. An old photo from the first era goes here." loading="lazy" width="900" height="675"><figcaption>Era one<span>Sample. Years to fill in.</span></figcaption></figure>
-    <figure class="rise"><img src="media/era-2.jpg" alt="Sample. An old photo from the second era goes here." loading="lazy" width="900" height="675"><figcaption>Era two<span>Sample. Years to fill in.</span></figcaption></figure>
-    <figure class="rise"><img src="media/era-3.jpg" alt="Sample. A photo from the current era goes here." loading="lazy" width="900" height="675"><figcaption>Era three<span>Now.</span></figcaption></figure>
+<section id="wall" class="scene band" data-scene="wall" data-options='{"hold":3}' aria-label="What guests say">
+  <div class="scene-stage on-blue">
+    <h2>What they say when they leave.</h2>
+    <picture class="pig">
+      <source media="(max-width: 819px)" srcset="media/art/pig-phone.webp">
+      <img class="host" src="media/art/pig.webp" alt="The pink pig from the wall, next to the words Oops love me." width="1351" height="1480" loading="lazy">
+    </picture>
+    <div class="posters">
+      <blockquote class="poster stk cream" style="--r:-3deg" data-move><p>I booked two nights. I stayed eleven. That's Pappi.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
+      <blockquote class="poster stk yellow" style="--r:2deg" data-move><p>Walked in alone at 4 pm. By midnight I had a table of twelve.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
+      <blockquote class="poster stk pink" style="--r:-1.5deg" data-move><p>Pappi in three words: loud, warm, home.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
+      <blockquote class="poster stk green" style="--r:3deg" data-move><p>Every hostel says "family". This one means it.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
+      <blockquote class="poster stk cream" style="--r:-2.5deg" data-move><p>I came for the party. I came back for the people.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
+      <blockquote class="poster stk orange" style="--r:1.5deg" data-move><p>Left with nine new friends from six countries. We still have the group chat.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
+      <blockquote class="poster stk purple" style="--r:-2deg" data-move><p>The dogs remembered me a year later. So did the staff.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
+      <blockquote class="poster stk yellow" style="--r:2.5deg" data-move><p>I've been to forty hostels. I only ever went back to one.</p><footer>Sample. A real guest's name and country go here.</footer></blockquote>
+    </div>
   </div>
-  <div class="row rise">
-    <button type="button" class="btn" data-soon="The link for sending old photos">Send your old photos</button>
-    <button type="button" class="link" data-soon="The Instagram link">Pappi on Instagram</button>
-  </div>
-  <p class="fine rise">In a photo and want it gone? <button type="button" class="link" data-soon="The remove my photo link">One message and it's gone.</button></p>
+  <svg class="drip" viewBox="0 0 1200 64" preserveAspectRatio="xMinYMin slice" aria-hidden="true"></svg>
 </section>
 
-<section id="basics" class="wall paper">
-  <h2 class="rise">Where, what, how much.</h2>
-  <dl class="rise">
-    <div><dt>Where</dt><dd>Ozran Beach Road, next to 9 Bar, Vagator, North Goa. <a href="https://www.google.com/maps/search/?api=1&amp;query=Pappi+Chulo+Vagator" target="_blank" rel="noopener">Open in Google Maps</a></dd></div>
-    <div><dt>Getting here</dt><dd>Sample. Taxi times from Mopa and Dabolim airports and from Thivim station go here.</dd></div>
-    <div><dt>Beds</dt><dd>Dorms, a girls' dorm, a quiet dorm and private rooms. New rooms are being built now. Sample: prices from Rs X a night go here.</dd></div>
-    <div><dt>Nights</dt><dd>Live DJs, game nights, Hilltop nights. Sample: the week's plan goes here.</dd></div>
-    <div><dt>Check in</dt><dd>Sample: check in and check out times go here.</dd></div>
-    <div><dt>House rules</dt><dd>Short and fair. Be good to the staff, the dogs and each other. Sample: the rest goes here.</dd></div>
-    <div><dt>Talk to us</dt><dd>Sample: WhatsApp, Instagram and email go here.</dd></div>
-  </dl>
+<section id="stories" class="band cream">
+  <div class="wrap">
+    <h2>Don't take our word for it.</h2>
+    <p class="lede">Short videos of real guests. Tap one for sound, swipe for more.</p>
+    <div class="rail" id="rail" role="list" aria-label="Guest videos"></div>
+  </div>
 </section>
 
-<section id="book" class="wall pink">
-  <h2 class="rise">Book straight with Pappi.</h2>
-  <p class="lede rise">No booking site in the middle. You pay less, Pappi keeps more. Same beds, same people.</p>
-  <div class="rise"><button type="button" class="btn ink" data-book>Book a bed</button></div>
-  <p class="fine rise">The button opens Pappi's own booking page once we add the link.</p>
+<section id="now" class="band cream">
+  <div class="wrap duo flip">
+    <div class="art">
+      <svg class="splash" style="left:-6%;top:-2%;width:60%;color:var(--green)" viewBox="0 0 400 320" aria-hidden="true"><use href="#s-blob" fill="currentColor"/></svg>
+      <span class="smoke" style="left:74%;top:44%"></span><span class="smoke" style="left:77%;top:40%"></span><span class="smoke" style="left:72%;top:38%"></span>
+      <picture>
+        <source media="(max-width: 819px)" srcset="media/art/croc-phone.webp">
+        <img class="host pop" src="media/art/croc.webp" alt="The bar's croc from the wall, in a purple cap, grinning." width="1563" height="1056" loading="lazy">
+      </picture>
+    </div>
+    <div class="copy">
+      <h2>Right now in Goa it's <span class="clock" id="clock">late</span>.</h2>
+      <p class="lede">Every night starts at the bar. Where it ends is up to the night.</p>
+      <ol id="plan">
+        <li class="stk cream pop" data-from="7" data-to="12"><span>10 am</span><span>Chai under the mango tree. The dogs are up. Nobody else is.</span></li>
+        <li class="stk cream pop" data-from="12" data-to="16"><span>1 pm</span><span>Slow, sunburnt, happy. Late breakfast, the swing bench, a beach run.</span></li>
+        <li class="stk cream pop" data-from="16" data-to="20"><span>5 pm</span><span>Warming up. Sunset at Ozran, games at the bar, the playlist gets louder.</span></li>
+        <li class="stk cream pop" data-from="20" data-to="0"><span>9 pm</span><span>Full house. DJ, UV lights on the floor, the bar is the centre of the world.</span></li>
+        <li class="stk cream pop" data-from="0" data-to="5"><span>12 am</span><span>Out into Goa. Everyone leaves for Hilltop together, or the party stays home.</span></li>
+        <li class="stk cream pop" data-from="5" data-to="7"><span>6 am</span><span>Sunrise with yesterday's strangers. Now they're your people.</span></li>
+      </ol>
+      <p class="fine">Sample plan. The week's real nights go here once the team sends them.</p>
+    </div>
+  </div>
+</section>
+
+<section id="day" class="band on-yellow" aria-label="A day at Pappi">
+  <div class="wrap">
+    <div class="duo">
+      <div class="copy">
+        <h2>Repeat the process.</h2>
+        <p class="lede">Boom, beat, bass. That's the tiger's rule on the wall, and it's the shape of every day here.</p>
+      </div>
+      <div class="art">
+        <picture>
+          <source media="(max-width: 819px)" srcset="media/art/tiger-phone.webp">
+          <img class="host pop" src="media/art/tiger.webp" alt="The tiger from the wall, halo and sunglasses, under the words Boom beat bass repeat the process." width="1600" height="946" loading="lazy">
+        </picture>
+      </div>
+    </div>
+    <div class="three">
+      <figure class="polaroid stk pop" style="--r:-2deg"><img src="media/day-1.jpg" alt="Sample photo. A real morning photo goes here." loading="lazy" width="1200" height="800"><figcaption>Slow start<span>Chai and coffee under the mango tree. Last night's stories, swapped.</span></figcaption></figure>
+      <figure class="polaroid stk pop" style="--r:1.5deg"><img src="media/day-3.jpg" alt="Sample photo. A real sunset photo goes here." loading="lazy" width="1200" height="800"><figcaption>Sunset at the bar<span>9 Bar next door, the cliff, the whole hostel on the wall watching.</span></figcaption></figure>
+      <figure class="polaroid stk pop" style="--r:-1deg"><img src="media/day-5.jpg" alt="Sample photo. A real late night photo goes here." loading="lazy" width="1200" height="800"><figcaption>Full house<span>Some nights the floor goes till late. Some nights everyone walks up to Hilltop.</span></figcaption></figure>
+    </div>
+  </div>
+  <svg class="drip" viewBox="0 0 1200 64" preserveAspectRatio="xMinYMin slice" aria-hidden="true"></svg>
+</section>
+
+<section id="eras" class="band on-purple">
+  <div class="wrap">
+    <div class="duo flip">
+      <div class="art">
+        <picture>
+          <source media="(max-width: 819px)" srcset="media/art/woman-phone.webp">
+          <img class="host pop" src="media/art/woman.webp" alt="The masked woman from the wall, in grey, with pink and grey clouds." width="1494" height="1440" loading="lazy">
+        </picture>
+      </div>
+      <div class="copy">
+        <h2>Were you here?</h2>
+        <p class="lede">Eleven years. Three crowds who each think of Pappi as their Goa. Thousands of you. Send us your old photos and find yourself on this page.</p>
+      </div>
+    </div>
+    <div class="three">
+      <figure class="polaroid stk pop" style="--r:-2deg"><img src="media/era-1.jpg" alt="Sample. An old photo from the first era goes here." loading="lazy" width="900" height="675"><figcaption>The first crowd<span>The early backpackers who found it before it had a name online. Sample years.</span></figcaption></figure>
+      <figure class="polaroid stk pop" style="--r:1.5deg"><img src="media/era-2.jpg" alt="Sample. An old photo from the second era goes here." loading="lazy" width="900" height="675"><figcaption>The middle crowd<span>The years it became the party base before Hilltop. Big nights, big group photos.</span></figcaption></figure>
+      <figure class="polaroid stk pop" style="--r:-1deg"><img src="media/era-3.jpg" alt="Sample. A photo from the current era goes here." loading="lazy" width="900" height="675"><figcaption>Today's crowd<span>Solo travellers and long-weekend gangs. Now.</span></figcaption></figure>
+    </div>
+    <div class="row">
+      <button type="button" class="btn yellow" data-soon="The link for sending old photos">Send your old photos</button>
+      <button type="button" class="link" data-soon="The Instagram link">Pappi on Instagram</button>
+    </div>
+    <p class="fine">In a photo and want it gone? <button type="button" class="link" data-soon="The remove my photo link">One message and it's gone.</button></p>
+  </div>
+  <svg class="drip" viewBox="0 0 1200 64" preserveAspectRatio="xMinYMin slice" aria-hidden="true"></svg>
+</section>
+
+<section id="basics" class="band cream">
+  <div class="wrap duo">
+    <div class="copy">
+      <h2>Hey. Where, what, how much.</h2>
+      <dl class="stk cream pop" style="--r:-0.6deg">
+        <div><dt>Where</dt><dd>Ozran Beach Road, next to 9 Bar, Vagator, North Goa. <a href="https://www.google.com/maps/search/?api=1&amp;query=Pappi+Chulo+Vagator" target="_blank" rel="noopener">Open in Google Maps</a></dd></div>
+        <div><dt>Getting here</dt><dd>Sample. Taxi times from Mopa and Dabolim airports and from Thivim station go here.</dd></div>
+        <div><dt>Beds</dt><dd>The Big Pappi, a 14-bed dorm for groups. Two small premium dorms. A women-only dorm. Private rooms. Sample: prices from Rs X a night go here.</dd></div>
+        <div><dt>Every stay includes</dt><dd>A welcome drink at check in, the house playlist, game nights, and a crew to go out with.</dd></div>
+        <div><dt>Get here between</dt><dd>Sample: check in and check out times go here. We'll have a drink waiting.</dd></div>
+        <div><dt>House rules</dt><dd>Dorms are for sleeping. The bar is for everything else. Be good to the staff, the dogs and each other.</dd></div>
+        <div><dt>Talk to us</dt><dd>Sample: WhatsApp, Instagram and email go here.</dd></div>
+      </dl>
+    </div>
+    <div class="art">
+      <svg class="splash" style="right:-8%;bottom:-6%;width:70%;color:var(--orange)" viewBox="0 0 400 320" aria-hidden="true"><use href="#s-blob" fill="currentColor"/></svg>
+      <picture>
+        <source media="(max-width: 819px)" srcset="media/art/cat-phone.webp">
+        <img class="host pop" src="media/art/cat.webp" alt="The blue cat from the wall, grinning, with the word Hey." width="1600" height="1014" loading="lazy">
+      </picture>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="band on-pink">
+  <div class="wrap">
+    <h2>Book straight with Pappi.</h2>
+    <p class="lede">No booking site in the middle. You pay less, Pappi keeps more. Same beds, same people.</p>
+    <button type="button" class="btn ink" data-book>Book a bed</button>
+    <p class="fine">The button opens Pappi's own booking page once we add the link.</p>
+  </div>
+  <svg class="drip" viewBox="0 0 1200 64" preserveAspectRatio="xMinYMin slice" aria-hidden="true"></svg>
 </section>
 </main>
 
 <footer>
-  <p class="name">Pappi Chulo</p>
+  <picture class="name">
+    <source media="(max-width: 819px)" srcset="media/art/pappi-phone.webp">
+    <img src="media/art/pappi.webp" alt="Pappi Chulo, painted on the wall in puffy letters." width="1600" height="789" loading="lazy">
+  </picture>
   <div class="links">
-    <button type="button" data-soon="The Instagram link">Instagram</button>
-    <button type="button" data-soon="The WhatsApp link">WhatsApp</button>
-    <button type="button" data-soon="The email address">Email</button>
-    <a href="walk/">The 360 walk we're building</a>
+    <button type="button" class="btn small" data-soon="The Instagram link">Instagram</button>
+    <button type="button" class="btn small" data-soon="The WhatsApp link">WhatsApp</button>
+    <button type="button" class="btn small" data-soon="The email address">Email</button>
+    <a class="btn small" href="walk/">The 360 walk we're building</a>
   </div>
-  <p class="small">Party hostel. Ozran Beach Road, next to 9 Bar, Vagator, North Goa. Test version, nothing on this page is real yet.</p>
+  <p class="small">Party hostel. Ozran Beach Road, next to 9 Bar, Vagator, North Goa.<br>The wall art is by the artist who painted Pappi's walls, used with his blessing. Sample: his name and a link go here.<br>Test version, nothing else on this page is real yet.</p>
 </footer>
 
 <div id="stick" aria-hidden="true">
   <small>Book straight with Pappi.<br>No booking site fee.</small>
-  <button type="button" class="btn" data-book tabindex="-1">Book a bed</button>
+  <button type="button" class="btn small" data-book tabindex="-1">Book a bed</button>
 </div>
 <div id="toast" role="status"></div>
 
@@ -391,6 +546,9 @@ body.away #stick { transform: translateY(0); }
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(pointer: fine)").matches;
+  const live = !!(window.gsap && window.ScrollTrigger) && !reduced;
+  if (!live) document.documentElement.classList.add("no-gsap");
   const BOOK_URL = ""; // the Cloudbeds booking link goes here
 
   /* ---------- toast, book, tracking ---------- */
@@ -416,6 +574,18 @@ body.away #stick { transform: translateY(0); }
     else toast("Test version: Pappi's booking page opens here once we add the link.");
   }));
   $$("[data-soon]").forEach((b) => b.addEventListener("click", () => toast(`${b.dataset.soon} goes here once the team sends it.`)));
+
+  /* ---------- the drips: drawn once, hang off every coloured band ---------- */
+  $$("svg.drip").forEach((svg, k) => {
+    let d = "", caps = "";
+    const xs = [60, 190, 300, 455, 560, 700, 820, 960, 1080, 1170];
+    xs.forEach((x, i) => {
+      const w = 22 + ((i * 7 + k * 5) % 14), L = 14 + ((i * 13 + k * 11) % 36);
+      d += `M${x - w / 2} -6 V${L} a${w / 2} ${w / 2} 0 0 0 ${w} 0 V-6 `;
+      caps += `M${x - w / 2 - 2} -6 h${w + 4} v8 h-${w + 4} z `;
+    });
+    svg.innerHTML = `<path d="${d}"/><path class="cap" d="${caps}"/>`;
+  });
 
   /* ---------- hero video ---------- */
   const hero = $("#hero-video");
@@ -447,7 +617,8 @@ body.away #stick { transform: translateY(0); }
   STORIES.forEach((s, i) => {
     const el = document.createElement("button");
     el.type = "button";
-    el.className = "story";
+    el.className = "story stk pop";
+    el.style.setProperty("--r", `${(i % 2 ? 1 : -1) * (1 + (i % 3) * 0.6)}deg`);
     el.setAttribute("role", "listitem");
     el.setAttribute("aria-label", `Guest video ${i + 1}. ${s.quote} Tap for sound.`);
     el.dataset.sound = "off";
@@ -492,57 +663,66 @@ body.away #stick { transform: translateY(0); }
     $("#clock").textContent = `${h12}:${String(m).padStart(2, "0")} ${h < 12 ? "am" : "pm"}`;
     $$("#plan li").forEach((li) => {
       const from = Number(li.dataset.from), to = Number(li.dataset.to);
-      const live = from < to ? (h >= from && h < to) : (h >= from || h < to);
-      li.classList.toggle("live", live);
+      const on = from < to ? (h >= from && h < to) : (h >= from || h < to);
+      li.classList.toggle("live", on);
     });
   }
   paintClock();
   setInterval(paintClock, 30000);
 
-  /* ---------- the two scenes ---------- */
-  // The hero frame straightens and grows until the night fills the screen, then the page moves on.
-  window.Scenes["hero-grow"] = (root, o) => Stage.scene(root, {
-    hold: o.hold || 1.6, phone: "rest",
-    build(tl, { q }) {
-      const frame = q(".frame")[0], copy = q(".copy")[0], top = q("#top")[0];
-      const r = frame.getBoundingClientRect();
-      const s = Math.max(innerWidth / r.width, innerHeight / r.height) * 1.02;
-      const dx = innerWidth / 2 - (r.left + r.width / 2), dy = innerHeight / 2 - (r.top + r.height / 2);
-      tl.to(frame, { rotate: 0, x: dx, y: dy, scale: s, duration: 0.85 }, 0.05)
-        .to(copy, { autoAlpha: 0, y: -40, duration: 0.3 }, 0.15)
-        .to(top, { autoAlpha: 0, duration: 0.2 }, 0.3);
-    },
-  });
-  // The words wall: posters paste on one at a time, until the wall is covered.
-  // Spots on the wall that stay clear of the heading (top-left), in percent of the stage.
-  const SPOTS = [[54, 6], [66, 14], [54, 30], [66, 38], [4, 52], [26, 60], [48, 58], [64, 64]];
+  /* ---------- the review wall scene: quotes slap on, one at a time ---------- */
+  // Spots on the wall that stay clear of the heading (top-left) and the pig (bottom-left), in percent.
+  const SPOTS = [[52, 12], [68, 22], [48, 36], [66, 48], [36, 60], [60, 64], [44, 78], [66, 82]];
   window.Scenes["wall"] = (root, o) => Stage.scene(root, {
     hold: o.hold || 3, phone: "rest",
     build(tl, { q }) {
-      const posters = q(".poster");
-      posters.forEach((p, i) => {
+      q(".poster").forEach((p, i) => {
         const [x, y] = SPOTS[i % SPOTS.length];
         p.style.left = `${x}%`; p.style.top = `${y}%`;
         const r = Number((p.style.getPropertyValue("--r") || "0").replace("deg", "")) || 0;
-        tl.fromTo(p, { y: innerHeight * 1.1, rotate: r * 4, autoAlpha: 1 }, { y: 0, rotate: r, duration: 0.14, ease: "power2.out" }, 0.04 + i * 0.105);
+        tl.fromTo(p, { y: innerHeight * 1.1, rotate: r * 5, scale: 1.15, autoAlpha: 1 }, { y: 0, rotate: r, scale: 1, duration: 0.14, ease: "back.out(1.6)" }, 0.04 + i * 0.105);
       });
     },
   });
   Stage.smooth();
   Stage.init();
 
-  /* ---------- the rest of the motion: entrances, the sticky bar ---------- */
+  /* ---------- the rest of the motion ---------- */
   if ("IntersectionObserver" in window) {
     new IntersectionObserver((entries) => {
       document.body.classList.toggle("away", !entries[0].isIntersecting);
     }, { threshold: 0.05 }).observe($("#hero"));
-    const rev = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rev.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px -10% 0px" });
-    let k = 0;
-    $$(".rise").forEach((el) => { el.style.transitionDelay = `${(k++ % 6) * 70}ms`; rev.observe(el); });
+  }
+  if (live) {
+    // things pop in like stickers slapped on: a little big, a little crooked, then they settle
+    const tilt = (el) => parseFloat(getComputedStyle(el).getPropertyValue("--r")) || 0;
+    gsap.set(".pop", { visibility: "visible", autoAlpha: 0, scale: 0.72, rotate: (i, el) => tilt(el) + (i % 2 ? 7 : -7) });
+    ScrollTrigger.batch(".pop", {
+      start: "top 88%", once: true,
+      onEnter: (els) => gsap.to(els, { autoAlpha: 1, scale: 1, rotate: (i, el) => tilt(el), duration: 0.7, ease: "back.out(1.8)", stagger: 0.08 }),
+    });
+    // the gorilla floats in zero gravity
+    gsap.to("#gorilla", { y: -14, rotate: 1.2, duration: 2.8, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 1 });
+    // splashes drift slower than the page
+    $$(".splash").forEach((s) => gsap.to(s, { y: -70, ease: "none", scrollTrigger: { trigger: s.parentElement, start: "top bottom", end: "bottom top", scrub: true } }));
+    // drips grow down when a band arrives
+    $$("svg.drip").forEach((d) => gsap.from(d, { scaleY: 0, transformOrigin: "50% 0", duration: 0.9, ease: "elastic.out(1, 0.5)", scrollTrigger: { trigger: d, start: "top 95%", once: true } }));
+    // the croc's smoke
+    gsap.to(".smoke", { y: -90, x: 20, scale: 1.8, autoAlpha: 0, duration: 3.2, ease: "power1.out", stagger: { each: 1.1, repeat: -1 }, startAt: { autoAlpha: 0.9, scale: 0.5 } });
+    // jelly buttons
+    $$(".btn").forEach((b) => {
+      b.addEventListener("pointerenter", () => gsap.to(b, { scale: 1.06, duration: 0.8, ease: "elastic.out(1, 0.4)" }));
+      b.addEventListener("pointerleave", () => gsap.to(b, { scale: 1, duration: 0.4, ease: "power2.out" }));
+      b.addEventListener("pointerdown", () => gsap.to(b, { scaleY: 0.88, scaleX: 1.08, duration: 0.12 }));
+      b.addEventListener("pointerup", () => gsap.to(b, { scaleY: 1, scaleX: 1, duration: 0.6, ease: "elastic.out(1, 0.35)" }));
+    });
+    // on a laptop the characters lean toward the mouse, a little
+    if (fine) {
+      const tilts = $$(".host").map((h) => gsap.quickTo(h, "rotation", { duration: 0.6, ease: "power2.out" }));
+      addEventListener("pointermove", (e) => { const t = (e.clientX / innerWidth - 0.5) * 4; tilts.forEach((f) => f(t)); }, { passive: true });
+    }
   } else {
-    $$(".rise").forEach((el) => el.classList.add("in"));
+    $$(".pop").forEach((el) => el.classList.add("in"));
   }
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) $$("video").forEach((v) => v.pause());
