@@ -6,8 +6,8 @@
 set -e
 SET="$1"
 case "$SET" in
-  a|b) ;;
-  *) echo "Say which set: a or b"; exit 1 ;;
+  a|b|c) ;;
+  *) echo "Say which set: a, b or c"; exit 1 ;;
 esac
 DIR="media/set-$SET"
 [ -d "$DIR" ] || { echo "No folder $DIR"; exit 1; }
