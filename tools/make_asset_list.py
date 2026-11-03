@@ -63,6 +63,13 @@ SECTIONS = [
             "At the start of each video ask: \"Are you happy to be on the Pappi website?\" Keep their yes in the video.",
             "Write down each guest's first name and country in a note next to the file.",
         ]),
+        ("Where they go on the page", [
+            "The page keeps <b>six spaces</b> for these, one per guest. They hold party clips for now, so the page is never empty. Each guest video you send takes one of the six.",
+            "Send the <b>original</b> file. Don't rename it, we do that.",
+            "Film them from the waist up, face in the top half, the painted wall behind them if you can.",
+            "One guest fills one space. Send thirty, we pick the best six and keep the rest for later.",
+            "Their words become the quote printed over the video, so let them finish their sentences.",
+        ]),
     ]),
     ("B. Party and friends: clips and photos", "A good phone is fine. Use the back camera.", [
         ("Clips (tall, 9:16, 5 to 15 seconds each)", [
