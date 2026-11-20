@@ -1,6 +1,6 @@
 # Photos from the dream site test (20 Nov 2026)
 
-Real Pappi photos, picked from the Pappi Drive folder "Videos and Photos". They were used on the test page "Pappi Chulo Dream Website" and Roro liked how they looked. All are 1400 px on the long side, JPG. Nothing on the live page uses them yet. Pick from here when filling a media set. 48 photos in all.
+Real Pappi photos, picked from the Pappi Drive folder "Videos and Photos". They were used on the test page "Pappi Chulo Dream Website" and Roro liked how they looked. All are 1400 px on the long side, JPG. Nothing on the live page uses them yet. Pick from here when filling a media set. 68 photos in all.
 
 ## Safe to use (no close faces)
 | File | What it shows | Shape | From |
@@ -49,11 +49,36 @@ Real guests and team together. Close faces. The rule above in CLAUDE.md is that 
 | holi-friends.jpg | Two friends hugging at Holi 2026 | tall |
 | gate-night-full.jpg | Two guests reaching up to the lit gate sign, suitcase in hand | tall |
 
-## eras/ (5 photos, for the "three eras" and "were you here" part)
-- early-porch-group.jpg: twelve backpackers on the porch of the old painted house, hammock on the side
-- 2018-bar-hut-group.jpg: the crew in front of the old straw-roof bar, Dec 2018 (small file, 960 px)
-- 2019-open-mic-night.jpg: guitar and mic night under string lights, Nov 2019 (small file, 1024 px)
-- holi-early-smile.jpg, holi-early-tongue-out.jpg: Holi faces covered in purple, early years
+## eras/ (25 photos, for the "three eras" and "were you here" part)
+Picked after going through all 118 old photos in the Drive folder "old photos". File names start with the year where the date is known. Nobody has told us what the three eras are yet, so the grouping below is a first guess from how the place looks. Vru or Roro should fix it.
+
+**The first years (pink painted house, star gate, straw bar). Dates not known.**
+- 01-first-gate-day.jpg, 01-first-gate-night.jpg: the very first gate, black with a white star
+- 01-porch-group-a.jpg, 01-porch-group-b.jpg: backpackers piled on the porch of the old pink house
+- 01-hippie-bus-house.jpg, 01-garden-crates-night.jpg: the house painted as a hippie bus, the garden at night. Both carry a "B.B.Gashi Photography" mark, so ask before using
+- 2016-bar-stools-crew.jpg: the crew on bar stools under the old tarp roof (2016, from the file name, likely)
+- 2018-bar-hut-group.jpg, 2018-diwali-kurta-group.jpg: the straw bar crew, and everyone in kurtas for Diwali
+
+**The middle years (graffiti takes over, 2019 to 2021). Dates are from the file names, so sure.**
+- 2019-03-beer-yoga.jpg: beer yoga on the lawn
+- 2019-09-painted-gate.jpg: the second gate, painted orange and green
+- 2019-09-monsoon-group.jpg: a big silly group pose in the rain season, a black dog watching
+- 2019-11-big-group-night.jpg: fourteen people hugging under the lights
+- 2019-11-circle-holding-hands.jpg: guests sitting in a circle holding hands
+- 2019-11-music-duo.jpg, 2019-open-mic-night.jpg: live music nights
+- 2019-11-card-table.jpg: a long table of guests playing cards
+- 2020-02-everyone-toasts.jpg: the whole hostel raising shots in a circle
+- 2020-03-holi-whole-hostel.jpg: about forty people covered in colour, the best group photo we have
+- 2020-11-diwali-gate.jpg: the third gate, hung with marigolds for Diwali
+- 2021-new-year-swing.jpg: four friends on the swing, New Year 2021
+
+**Date not known**
+- halloween-beer-pong.jpg: a Halloween night around the beer pong table
+- holi-three-smiles.jpg, holi-early-smile.jpg, holi-early-tongue-out.jpg: Holi faces
+
+**Now (2025 and 2026):** use the photos in people/.
+
+**A ready story: the gate through the years.** 01-first-gate-day.jpg, then 2019-09-painted-gate.jpg, then 2020-11-diwali-gate.jpg, then ../gate-night.jpg (today).
 
 ## New place and food photos (added with the people pack)
 chai-and-toast.jpg (morning chai on the bar), cold-coffee.jpg, pasta.jpg, shots-on-the-bar.jpg, laptop-and-coffee.jpg (working from the bar), gate-sign-day.jpg (the gate sign in daylight, no faces), bar-wide-quiet.jpg.
