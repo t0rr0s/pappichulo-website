@@ -1,6 +1,6 @@
 # Photos from the dream site test (20 Nov 2026)
 
-Real Pappi photos, picked from the Pappi Drive folder "Videos and Photos". They were used on the test page "Pappi Chulo Dream Website" and Roro liked how they looked. All are 1400 px on the long side, JPG. Nothing on the live page uses them yet. Pick from here when filling a media set.
+Real Pappi photos, picked from the Pappi Drive folder "Videos and Photos". They were used on the test page "Pappi Chulo Dream Website" and Roro liked how they looked. All are 1400 px on the long side, JPG. Nothing on the live page uses them yet. Pick from here when filling a media set. 48 photos in all.
 
 ## Safe to use (no close faces)
 | File | What it shows | Shape | From |
@@ -22,11 +22,45 @@ Real Pappi photos, picked from the Pappi Drive folder "Videos and Photos". They 
 | private.jpg, private-b.jpg | Private room, double bed, green arch | wide | Shubham, Jul 2026 |
 | bathroom-2022.jpg | Leaf tile washroom. Old, from before the rebuild. Check before use | tall | Property image, Nov 2022 |
 
-## people-ask-first/
-Close faces. The rule in CLAUDE.md is that everyone shown must have said yes. Do not put these on the page until Roro or Vru confirms.
-- beer-pong-night.jpg: a guest laughing at the ping pong table at night
-- holi-friends.jpg: two friends hugging at Holi 2026
-- gate-night-full.jpg: two guests posing under the lit gate sign
+## The goal for these photos (from Roro, 20 Nov 2026)
+The site should feel human, personal and easy to relate to. A stranger should feel the social vibe straight from the photos. So lead with people together, not empty rooms. Rooms come last.
+
+## people/ (17 photos, the heart of the pack)
+Real guests and team together. Close faces. The rule above in CLAUDE.md is that everyone shown must have said yes, so Roro or Vru confirms each one before it goes live.
+| File | What it shows | Shape |
+| --- | --- | --- |
+| christmas-night-group.jpg | Six friends squeezed together, grinning, Christmas 2025 night | tall |
+| group-night-pingpong-a.jpg, group-night-pingpong-b.jpg | A big mixed group posing by the ping pong table at night | wide |
+| beer-pong-night-group.jpg | A circle of guests around the table, cups lined up | tall |
+| foosball-night.jpg | Four guests locked into a foosball game under a wall painting | tall |
+| cheers-two-friends.jpg | Two friends raising red drinks at the bar | tall |
+| hug-with-the-dog.jpg | A guest hugging a sleepy hostel dog on the lawn | tall |
+| birthday-crown.jpg | A big smile under a light-up birthday crown | tall |
+| bar-chat-day.jpg | Guests chatting across the bar in daylight | tall |
+| bar-evening.jpg | Three people sitting at the bar counter | tall |
+| bar-afternoon.jpg | Afternoon at the bar, gorilla wall behind | tall |
+| night-talk.jpg | Strangers talking under red and teal night lights | wide |
+| three-riders.jpg | Three friends with helmets, just arrived | tall |
+| dj-booth-selfie.jpg | Selfie from behind the DJ desk, Christmas lights | wide |
+| beer-pong-night.jpg | A guest laughing at the ping pong table at night | tall |
+| holi-friends.jpg | Two friends hugging at Holi 2026 | tall |
+| gate-night-full.jpg | Two guests reaching up to the lit gate sign, suitcase in hand | tall |
+
+## eras/ (5 photos, for the "three eras" and "were you here" part)
+- early-porch-group.jpg: twelve backpackers on the porch of the old painted house, hammock on the side
+- 2018-bar-hut-group.jpg: the crew in front of the old straw-roof bar, Dec 2018 (small file, 960 px)
+- 2019-open-mic-night.jpg: guitar and mic night under string lights, Nov 2019 (small file, 1024 px)
+- holi-early-smile.jpg, holi-early-tongue-out.jpg: Holi faces covered in purple, early years
+
+## New place and food photos (added with the people pack)
+chai-and-toast.jpg (morning chai on the bar), cold-coffee.jpg, pasta.jpg, shots-on-the-bar.jpg, laptop-and-coffee.jpg (working from the bar), gate-sign-day.jpg (the gate sign in daylight, no faces), bar-wide-quiet.jpg.
+
+## Where they could go on the page (a start, change freely)
+- Hero still: christmas-night-group.jpg or group-night-pingpong-b.jpg
+- "Nobody leaves alone": beer-pong-night-group.jpg, foosball-night.jpg, cheers-two-friends.jpg
+- The day loop: chai-and-toast.jpg (morning), bar-chat-day.jpg (afternoon), bar-evening.jpg (sunset), night-talk.jpg (late)
+- The family: hug-with-the-dog.jpg, birthday-crown.jpg, dj-booth-selfie.jpg
+- The eras: everything in eras/
 
 ## Not sure yet
 Which dorm photo belongs to which Cloudbeds room. Only the 2D Dorm is sure. Cloudbeds shows a mushroom wall for Trip Premium Dorm, so dorm-pastel.jpg is likely a different room.
