@@ -58,12 +58,8 @@ Real guests and team together. Close faces. The rule above in CLAUDE.md is that 
 ## New place and food photos (added with the people pack)
 chai-and-toast.jpg (morning chai on the bar), cold-coffee.jpg, pasta.jpg, shots-on-the-bar.jpg, laptop-and-coffee.jpg (working from the bar), gate-sign-day.jpg (the gate sign in daylight, no faces), bar-wide-quiet.jpg.
 
-## Where they could go on the page (a start, change freely)
-- Hero still: christmas-night-group.jpg or group-night-pingpong-b.jpg
-- "Nobody leaves alone": beer-pong-night-group.jpg, foosball-night.jpg, cheers-two-friends.jpg
-- The day loop: chai-and-toast.jpg (morning), bar-chat-day.jpg (afternoon), bar-evening.jpg (sunset), night-talk.jpg (late)
-- The family: hug-with-the-dog.jpg, birthday-crown.jpg, dj-booth-selfie.jpg
-- The eras: everything in eras/
+## How to use them (from Roro, 20 Nov 2026)
+The page is a draft, so do not fit these photos into its old boxes. Start from the photos. Ask of each spot: does a stranger see people having a good time together here? If not, put a people photo there. Use the feelings in `day-night.json`, not the old file names like day-1 or era-2.
 
 ## Not sure yet
 Which dorm photo belongs to which Cloudbeds room. Only the 2D Dorm is sure. Cloudbeds shows a mushroom wall for Trip Premium Dorm, so dorm-pastel.jpg is likely a different room.
