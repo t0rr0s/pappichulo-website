@@ -25,6 +25,9 @@ Real Pappi photos, picked from the Pappi Drive folder "Videos and Photos". They 
 ## The goal for these photos (from Roro, 20 Nov 2026)
 The site should feel human, personal and easy to relate to. A stranger should feel the social vibe straight from the photos. So lead with people together, not empty rooms. Rooms come last.
 
+## Day Pappi and Night Pappi (from Roro, 20 Nov 2026)
+The day and night idea is not only colours. Each spot on the page gets two photos: one for day, one for night. Different pictures, same feeling. Nine ready pairs are in `day-night.json` (hero, gate, crew, bar, games, table, talk, drink, family). Day ones are bright and slow. Night ones are warm, loud and full of people.
+
 ## people/ (17 photos, the heart of the pack)
 Real guests and team together. Close faces. The rule above in CLAUDE.md is that everyone shown must have said yes, so Roro or Vru confirms each one before it goes live.
 | File | What it shows | Shape |

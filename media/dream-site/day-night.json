@@ -1,0 +1,14 @@
+{
+  "note": "Day Pappi and Night Pappi. Same spot on the page, two photos with the same feeling. Show the day one in daylight hours and the night one after 7 pm Goa time (Asia/Kolkata). Paths are inside media/dream-site/.",
+  "pairs": [
+    {"slot": "hero",   "feeling": "this is the place",        "day": "garden.jpg",                 "night": "people/christmas-night-group.jpg"},
+    {"slot": "gate",   "feeling": "you have arrived",         "day": "gate-sign-day.jpg",          "night": "gate-night.jpg"},
+    {"slot": "crew",   "feeling": "you will have a crew",     "day": "people/three-riders.jpg",    "night": "people/group-night-pingpong-b.jpg"},
+    {"slot": "bar",    "feeling": "the bar is where you meet","day": "people/bar-chat-day.jpg",    "night": "people/cheers-two-friends.jpg"},
+    {"slot": "games",  "feeling": "somebody always plays",    "day": "rain-cricket.jpg",           "night": "people/beer-pong-night-group.jpg"},
+    {"slot": "table",  "feeling": "one more game",            "day": "pingpong.jpg",               "night": "people/foosball-night.jpg"},
+    {"slot": "talk",   "feeling": "strangers talking",        "day": "people/bar-afternoon.jpg",   "night": "people/night-talk.jpg"},
+    {"slot": "drink",  "feeling": "what is on the counter",   "day": "chai-and-toast.jpg",         "night": "shots-on-the-bar.jpg"},
+    {"slot": "family", "feeling": "the ones who live here",   "day": "people/hug-with-the-dog.jpg","night": "people/dj-booth-selfie.jpg"}
+  ]
+}
